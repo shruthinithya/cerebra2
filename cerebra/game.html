@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <link rel="shortcut icon" href="img/favicon.ico">
+    <title>Cerebra K'17</title>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <style type="text/css">
+      ::-webkit-input-placeholder { /* WebKit browsers */
+    color:    white;
+     opacity: 0.2 !important;
+}
+           ::-webkit-label { /* WebKit browsers */
+    color:    red;
+     opacity: 0.2 !important;
+}
+.page-footer {
+   position:fixed;
+   bottom:0;
+   width:100%;
+  // height:50px;   /* Height of the footer */
+   background:#6cf;
+ }
+.submit{
+  background-color: #26a69a !important;
+}
+.right{
+  background-color: #46904d !important;  
+}
+.wrong{
+  background-color: #cc2b0d !important;  
+}
+.img-div { height:100%; width:100%;}
+img { max-width:100% }
+
+table.highlight tbody tr:hover {
+    background-color:#1f2223 !important;
+}
+
+      </style>
+	  <script>
+	  function checkAns1()
+	  {
+		var x=document.getElementById("ans1").value;
+		if(x.toLowerCase() === "chennai") 
+			 document.getElementById("status1").innerHTML="<font style='color:lightgreen'>CORRECT</font>";
+		else
+			document.getElementById("status1").innerHTML="&nbsp;<font style='color:red'>WRONG</font>";
+			
+	  }
+	  </script>
+    </head>
+
+    <body style="overflow-x: hidden">
+   
+    <header>
+      <nav class="top-nav teal" style="height:90px;">
+      <div class="row">
+           <div class="col s3"><a href="http://kurukshetra.org.in/" target="_blank"><img style="height:90px;width:220px; padding-left: 10px;" src="img/k orange white.png"/></a></div>
+		  <div class="col s6 " ><img style="height:90px;width:550px;padding-left: 70px;" src="img/title.jpg"></div>
+		 </div> 
+		
+	
+		  
+      </nav>
+      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
+	  </div>
+
+    </header>
+    	<div class="row" style="padding-bottom:40px;">
+          <ul class="tabs cyan darken-4 " style="overflow-x: hidden;">
+		    <li class="tab col s12 l4"><a class="active white-text" href="#game" style="font-size:18px" >Game Play</a></li>
+            <li class="tab col s12 l4"><a class="white-text" href="#forum" style="font-size:18px" >Forum</a></li>
+            <li class="tab col s12 l4"><a class="white-text" href="#lb" style="font-size:18px" >Leaderboard</a></li>
+			 </ul>
+			 
+			 
+		<!-- GAME PLAY -->
+		
+        <div id="game" class="col s12" align="center">
+          <ul class="collapsible popout" data-collapsible="accordion" style="width: 70%; display: inline-block; text-align: left">
+            <li>
+             <div class="collapsible-header teal lighten-5" style="min-height: 4em; line-height: 4em; font-weight:bold; font-size: 20px; text-align:center">SET 1</div>
+              <div class="collapsible-body" style="background-color: rgba(0,0,0,0.9);">
+			      <div class="row" style="width:70%; margin-top: 6px;">
+				  
+				  <!-- Question 1 starts -->
+                    <div class="input-field col s12" style="margin-top: 36px; color: #fff;">
+                      <div class="row">
+                        <div class="col s11">
+                          <input placeholder="Your answer" id="ans1" type="text" class="validate">                      
+                        </div>
+                        <div class="col s1 checkanswer">
+                          <a class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" onclick="checkAns1();">
+                          Check                          
+                          </a>
+						  <div id="status1"></div>
+                        </div> 
+                      </div>
+                      <label class="active" for="first_name2" style="font-size: 18px;">Which is the capital city of Tamil Nadu?</label>
+                    </div>
+					
+					<!-- Qs 1 ends -->
+					
+					 <div class="input-field col s12" style="margin-top: 36px; color: #fff;">
+                      <div class="row">
+                        <div class="col s11">
+                          <input placeholder="Your answer" id="ans2" type="text" class="validate">                      
+                        </div>
+                        <div class="col s1 checkanswer">
+                          <a class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" onclick="checkAns();">
+                          Check                          
+                          </a>
+						  <div id="status2"></div>
+                        </div> 
+                      </div>
+                      <label class="active" for="first_name2" style="font-size: 18px;">Question 2</label>
+                    </div>
+					                    
+                    </div>
+                <a class="btn" style="margin-left:45%; margin-bottom: 1%;" onclick="Materialize.toast('Please fill all the answers', 4000)">SUBMIT</a>
+              </div>
+            </li>
+			
+			
+			
+            <li>
+              <div class="collapsible-header teal lighten-4" style="min-height: 4em; line-height: 4em; font-weight:bold;font-size: 20px;text-align:center ">SET 2</div>
+              <div class="collapsible-body" style="background-color: rgba(0,0,0,0.9)">
+			      <div class="row" style="width:70%; margin-top: 6px;">
+                    <div class="input-field col s12" style="margin-top: 36px; color:#fff;">   <!-- color is of insertion pointer --> 
+                      <div class="row">
+                        <div class="col s11">
+                          <input placeholder="Your answer" id="first_name2" type="text" class="validate">                      
+                        </div>
+                        <div class="col s1 checkanswer">   <!-- tick icon -->
+                          <a class="btn-floating btn-large waves-effect waves-light red">
+                          <i class="material-icons submit">done</i>
+                          </a>
+
+                        </div> 
+                      </div>
+                      <label class="active" for="first_name2" style="font-size: 18px;">Question 1</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input placeholder="Your answer" id="first_name2" type="text" class="validate"><button>SUBMIT</button>
+                      <label class="active" for="first_name2">rjvnwejEKWJ DJS beijc weufhQWJDck hcbqwiudq sdjcbWUd</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input placeholder="Your answer" id="first_name2" type="text" class="validate">
+                      <label class="active" for="first_name2">Question 1</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input placeholder="Your answer" id="first_name2" type="text" class="validate">
+                      <label class="active" for="first_name2">Question 1</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input placeholder="Your answer" id="first_name2" type="text" class="validate">
+                      <label class="active" for="first_name2">Question 1</label>
+                    </div>
+                    </div>
+                <a class="btn" style="margin-left:50%; margin-bottom: 1%;" onclick="Materialize.toast('Please fill all the answers', 4000)">SUBMIT</a>
+              </div>
+            </li>
+            <li>
+               <div class="collapsible-header teal lighten-3" style="min-height: 4em; line-height: 4em; font-weight:bold;font-size: 20px; text-align:center">SET 3</div>
+              <div class="collapsible-body" style="background-color: rgba(0,0,0,0.9)">
+			      <div class="row" style="width:70%; margin-top: 6px;">
+                    <div class="input-field col s12" style="margin-top: 36px; color:#fff;">   <!-- color is of insertion pointer --> 
+                      <div class="row">
+                        <div class="col s11">
+                          <input placeholder="Your answer" id="first_name2" type="text" class="validate">                      
+                        </div>
+                        <div class="col s1 checkanswer">   <!-- tick icon -->
+                          <a class="btn-floating btn-large waves-effect waves-light red">
+                          <i class="material-icons submit">done</i>
+                          </a>
+
+                        </div> 
+                      </div>
+                      <label class="active" for="first_name2" style="font-size: 18px;">Question 1</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input placeholder="Your answer" id="first_name2" type="text" class="validate"><button>SUBMIT</button>
+                      <label class="active" for="first_name2">Question 1</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input placeholder="Your answer" id="first_name2" type="text" class="validate">
+                      <label class="active" for="first_name2">Question 1</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input placeholder="Your answer" id="first_name2" type="text" class="validate">
+                      <label class="active" for="first_name2">Question 1</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input placeholder="Your answer" id="first_name2" type="text" class="validate">
+                      <label class="active" for="first_name2">Question 1</label>
+                    </div>
+                    </div>
+                <a class="btn" style="margin-left:50%; margin-bottom: 1%;" onclick="Materialize.toast('Please fill all the answers', 4000)">SUBMIT</a>
+              </div>
+            </li>
+          </ul>
+
+        </div>
+		<!-- GAME PLAY ENDS-->
+		
+		<!-- FORUM -->
+        <div id="forum" class="col s12" style="color:white">Posting qs<br/>
+        </div>
+		<!-- FORUM ENDS -->
+		
+		<!-- LEADERBOARD -->
+        <div id="lb" class="col s12" style="color: #fff; background-color: rgba(0,0,0,0.8);">
+        
+        <center><h4>Leaderboard</h4>
+        <table class="highlight bordered centered responsive-table" style="background-color:transparent;width:800px">
+        <thead style="background-color:grey;color:black;font-size:16px;">
+          <tr>
+              <th data-field="rank">RANK</th>
+              <th data-field="kid">k! ID</th>
+              <th data-field="name">NAME</th>
+			  <th data-field="points">POINTS</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>123</td>
+            <td>abc</td>
+			<td>92</td>
+          </tr>
+          <tr>
+			<td>2</td>
+            <td>456</td>
+            <td>def</td>
+			<td>80</td>
+          </tr>
+          <tr>
+			<td>3</td>
+            <td>789</td>
+            <td>ghi</td>
+			<td>65</td>
+          </tr>
+		  <tr>
+			<td>4</td>
+            <td>980</td>
+            <td>jkl</td>
+			<td>55</td>
+          </tr>
+		 </tbody>
+      </table> 
+      </center>       
+        </div>   
+	<!-- LEADERBOARD -->		
+      </div>
+	
+      
+	  <div class="footer flow-text">
+    	<footer class="page-footer" style="background-color: transparent; height:70px;">          
+        <div class="footer-copyright" style="background-color:white;">
+		  
+		<div class="row"> 
+          <div class="col s3 "><span class="flow-text" style="font-size:12px;color:black"><b>Copyright 2016 @ CEG Tech Forum. All rights reserved.</b></span></div>
+		  <div class="col s3 offset-s6"><img style="height:40px;width:280px; padding-left: 0px;" src="img/logo1.png"/></div>
+		</div><br>
+		
+		<!--<div class="row">
+          <div class="col s6">
+            <div class="container" style="color:white;font-size:12px;">
+              Copyright 2016 @ CEG Tech Forum. All rights reserved.
+            </div>
+          </div>
+          <div class="col s6" style="padding-left: 20%">           
+              <img style="height: auto;width:400px; padding-top: 4px;" src="img/logo1.png"/>            
+    
+          </div>
+          </div> 
+		  -->
+        </div>
+        </footer>
+        </div>		
+		
+		
+        <!--Import jQuery before materialize.js-->
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+      <!--script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+        <script type="text/javascript">
+          $('.checkanswer').click(function() {
+                $('.submit').addClass('wrong');
+                $('.submit').removeClass('submit');
+            });                      
+        </script>
+      
+    </body>
+  </html>
