@@ -22,7 +22,7 @@ $("#login_form").submit(function(e) {
                 else if(result == 2)
                 {
                     alert("success");
-                    window.location="game.php";
+                    window.location="GamePlay.php";
                 }
                 else
                     alert("failure");
@@ -51,13 +51,44 @@ $("#login_form").submit(function(e) {
 });
 
 // practice round - validation answers
-
 function submitAnswer(e) { 
+    $('#e').hide();
+    $('.progress_loader').show();    
     answer = document.getElementById('answer_'+e.id).value;
     $.ajax
     ({ 
         url: 'submit.php',
         data: 'key=' + e.id + '&answer=' + answer,
+        type: 'post',
+        dataType: "json",
+        success: function(result)
+        {
+            if(result['code']==1)
+            {
+                Materialize.toast('Right Answer!', 1000);
+                document.getElementById('answer_'+e.id).disabled = true;
+                document.getElementById(e.id).className = "btn disabled";
+                //var st = "<?php $response['state']?>";
+                //if(st > 1)
+                  //  alert(st);
+            }
+            else if(result['code']==0)
+                Materialize.toast('Dai thappudaa!', 1000);
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) { 
+            alert('error');          
+        }
+    });
+    $('.progress_loader').hide();
+    $('#e').show();
+}
+// pre run fetching questions
+function getset(m)
+{
+    $.ajax
+    ({ 
+        url: 'submit.php',
+        data: 'emailId=' + m,
         type: 'post',
         dataType: "json",
         success: function(result)
@@ -75,33 +106,4 @@ function submitAnswer(e) {
             alert('error');          
         }
     });
-    $('.progress_loader').hide();
-    $('.login_submit').show();
-}
-// pre run fetching questions
-/*function timer()
-{
-    var seconds_left = 10;
-    var interval = setInterval(function() {
-        document.getElementById('timer_div').innerHTML = --seconds_left;
-
-        if (seconds_left <= 0)
-        {
-            document.getElementById('timer_div').innerHTML = 'You are ready';
-            clearInterval(interval);
-        }
-    }, 1000);
-}*/
-function initializeClock(id, endtime){
-  var clock = document.getElementById(id);
-  var timeinterval = setInterval(function(){
-    var t = getTimeRemaining(endtime);
-    clock.innerHTML = 'days: ' + t.days + '<br>' +
-                      'hours: '+ t.hours + '<br>' +
-                      'minutes: ' + t.minutes + '<br>' +
-                      'seconds: ' + t.seconds;
-    if(t.total<=0){
-      clearInterval(timeinterval);
-    }
-  },1000);
 }

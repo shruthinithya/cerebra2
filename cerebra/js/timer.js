@@ -16,6 +16,9 @@ function Tick() {
 		alert("Time up!")
 		window.location="logout.php";
 	}
+	{
+		getNextLevel();		 
+	}
 TotalSeconds -= 1;
 UpdateTimer()
 window.setTimeout("Tick()", 1000);
@@ -42,6 +45,31 @@ Timer.innerHTML = TimeStr;
 function LeadingZero(Time) {
 
 return (Time < 10) ? "0" + Time : + Time;
-
 }
- 
+function getNextLevel() {
+ 	$.ajax
+        ({ 
+            url: 'getNextLevel.php',
+            type: 'post',
+            dataType: "json",
+            success: function(result)
+            {
+                if(result['state'] > 1)
+                {
+                	alert(result['state']);
+                 
+                }
+                else if(result == 2)
+                {
+                    alert("success");
+                    window.location="practice.php";
+                }
+                else
+                    alert("failure");
+                
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                alert('error');          
+            }
+        });
+ } 

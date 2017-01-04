@@ -7,13 +7,6 @@ require 'utils.php';
     <head>
       <link rel="shortcut icon" href="img/favicon.ico">
     <title>Cerebra K'17</title>
-    <!--[if lt IE 9]>
-  <script>
-    document.createElement('figure');
-    document.createElement('figcaption');
-  </script>
-  <![endif]-->
-
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
@@ -80,7 +73,7 @@ img { max-width:100% }
         </div>
       </div>
       <div class="progress_loader" style="display:none;">Loading...</div>
-      <center><input type="submit" class="waves-effect waves-light btn login_submit" style="margin-bottom: 10px;" value="Login"></center>      
+      <center><input type="submit" class="waves-effect waves-light btn login_submit" style="margin-bottom: 10px;" value="Login" autofocus=""></center>
     </form>
 	<center>
      <a href="http://kurukshetra.org.in/#/register" class="waves-effect waves-light btn" style="margin-bottom: 10px;">New Particpant? Register</a>
