@@ -16,7 +16,6 @@ function Tick() {
 		alert("Time up!")
 		window.location="logout.php";
 	}
-	if(TotalSeconds == 2700)
 	{
 		getNextLevel();		 
 	}
