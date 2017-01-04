@@ -4,7 +4,7 @@ if(!isset($_SESSION['user']))
 {
 	$emailId = sanitizeParams($_POST['email']);
 	$password = sanitizeParams($_POST['password']);
-	
+
 	$url = 'cms.cegtechforum.com/api/login';
 	$params =  json_encode(array(
 		"emailId" => $emailId, 
@@ -22,31 +22,18 @@ if(!isset($_SESSION['user']))
 	if (curl_getinfo($ch, CURLINFO_HTTP_CODE) == 200)
 	{
 		$response = json_decode($response, true);
-		//print_r($response['user']['eventSubscriptionList']);
-		$_SESSION['user'] = $response['user'];
-		$_SESSION['access_token'] = $response['token'];
-		$_SESSION['login'] = "success";
-		foreach ($response['user']['eventSubscriptionList'] as $r) {
-			$_SESSION['user']['events'][$r['eventName']] = true;
-		}
-		foreach ($response['user']['workshopsList'] as $r) {
-			$_SESSION['user']['workshops'][$r['workshopName']] = true;
-		}
-		if ($_SESSION['user']['isSA'] == true)
-			$code = 1;
-		else
-			$code = 2;
-
-		$arr = array ('response'=>$code,'name'=>$_SESSION['user']['name']);
-		echo json_encode($arr);
+		$_SESSION['user'] = $response;
+		if ($response['state'] == 0)
+			echo 1;
+		else if ($response['state'] < 5)
+			echo 2;
+		else 
+			echo 3;
 
 	}
 	else
 	{
-		$_SESSION['login'] = "failure";
-		$code = 0;
-		$arr = array ('response'=>$code);
-		echo json_encode($arr);
+		echo 0;
 	}
 	
 	//header("Location: index.php");
@@ -56,7 +43,7 @@ if(!isset($_SESSION['user']))
 }
 else
 {
-	echo 3;
+	echo 4;
 }
 
 function sanitizeParams($param)

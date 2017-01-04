@@ -1,6 +1,6 @@
 <?php 
-session_start();
-require 'utils.php';
+require 'prerun.php';
+//require 'login.php';
 ?>
 <!DOCTYPE html>
   <html>
@@ -56,18 +56,28 @@ img { max-width:100% }
 	position: absolute; 
 	z-index: auto;
 }
+.disabled
+{
+	 pointer-events:none; 
+    opacity:0.6;         
+}
 
       </style>
 	
     </head>
 
-    <body style="overflow-x: hidden;">
+    <body style="overflow-x: hidden;"s>
 	<header>
       <nav class="top-nav teal" style="height:90px;">
       <div class="row">
            <div class="col s3"><a href="http://kurukshetra.org.in/" target="_blank"><img style="height:90px;width:250px; padding-left: 10px;" src="img/k orange white.png"/></a></div>
 		   <div class="col s6 flow-text" style="text-align:center;font-size:60px;padding-top:15px;font-family:'Merienda One';font-style:italic">CEREBRA</div>
-		 </div>  
+		   <!--div id="txt" style="font-size: 30px;"></div-->
+		   <div class="col s2" id='timer'  style="font-size: 20px;" />
+		</div>
+		<div class="col s1" style="font-size: 20px;" /><a href="logout.php">Logout</a>
+		</div>   
+		</div> 
       </nav>
       <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
 	  
@@ -82,27 +92,32 @@ img { max-width:100% }
             <li class="tab col s12 l4"><a href="#forum" style="font-size:18px" >Forum</a></li>
             <li class="tab col s12 l4"><a href="#lb" style="font-size:18px" >Leaderboard</a></li>
      </ul>
+
      <div id="game" class="col s12" align="center">
       <ul class="collapsible popout" data-collapsible="accordion" style="width:100%; display: inline-block; text-align: left">
        <li>
 	   <!-- SET 1 begins -->
        <div class="collapsible-header teal lighten-5" style="padding-bottom:10px;min-height: 4em; line-height: 4em; font-weight:bold; font-size: 20px; text-align:center">
-	   SET 1</div>
+	   SET 1
+	   </div>
 	   	<div class="collapsible-body">
 		 
 		
-		<!-- qs starts -->
+		<!-- SET 1 question starts -->
 	  <div class="row">
 	   <br>
+	   <?php
+    	foreach ($_SESSION['practice'] as $question) { 
+    	?>
 		<div class="col s8 offset-s2">
 		 <div class="card hoverable grey lighten-4">
 		  <div class="card-content">
 		  <div class="row">
-		  <div class="row"><div class="col s10" style="font-size:18px;margin-left:5px">Question 1</div>
+		  <div class="row"><div class="col s10" style="font-size:18px;margin-left:5px"><?php echo $question['question']; ?></div>
 			<div class="input-field col s11" style="margin-top:0px; margin-left:15px; color:black;">
 			<div class="row">
 			<div class="col s10">
-			 <input type="text" placeholder="Your answer" />
+			 <input type="text" placeholder="Your answer" id="answer_<?php echo $question['key'] ?>"  type="text" class="validate"/>
 			</div>
 			<div class="col s2  checkanswer">
 			 <a class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" onclick="Materialize.toast('This is your hint', 4000)">
@@ -114,79 +129,21 @@ img { max-width:100% }
 			</div>
 			
 			<div class="row"><div class="col s12">
-			<a class="btn" style="margin-left:75%; margin-bottom: 1%;" onclick="Materialize.toast('Right answer!', 4000)">SUBMIT</a>
+			<a class="btn" style="margin-left:75%; margin-bottom: 1%;" id="<?php echo $question['key'] ?>" onclick="submitAnswer(this);">SUBMIT</a>
 			</div></div>
 		  </div>
 		  </div> 
 		 </div>
 		  </div>  
 	    </div>
+
+	    <?php
+		}
+		?>
+
 		<!-- qs ends -->
 	
 		
-		<!-- qs starts -->
-	   
-	   <br>
-		<div class="col s8 offset-s2">
-		 <div class="card hoverable grey lighten-4">
-		  <div class="card-content">
-		  <div class="row">
-		  <div class="row"><div class="col s10" style="font-size:18px;margin-left:5px">Question 2</div>
-			<div class="input-field col s11" style="margin-top:0px; margin-left:15px; color:black;">
-			<div class="row">
-			<div class="col s10">
-			 <input type="text" placeholder="Your answer"/>
-			</div>
-			<div class="col s2  checkanswer">
-			 <a class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" onclick="Materialize.toast('This is your hint', 4000)">
-               Hint? 	                       
-             </a>
-			</div>
-			</div>
-			<!-- <label class="active grey-text text-darken-2" for="first_name2" style="font-size:18px;">Question 1</label>-->
-			</div>
-			
-			<div class="row"><div class="col s12">
-			<a class="btn" style="margin-left:75%; margin-bottom: 1%;" onclick="Materialize.toast('Right answer!', 4000)">SUBMIT</a>
-			</div></div>
-		  </div>
-		  </div> 
-		 </div>
-		  </div>  
-	    </div>
-		<!-- qs ends -->
-		
-		<!-- qs starts -->
-	   
-	   <br>
-		<div class="col s8 offset-s2">
-		 <div class="card hoverable grey lighten-4">
-		  <div class="card-content">
-		  <div class="row">
-		  <div class="row"><div class="col s10" style="font-size:18px;margin-left:5px">Question 3</div>
-			<div class="input-field col s11" style="margin-top:0px; margin-left:15px; color:black;">
-			<div class="row">
-			<div class="col s10">
-			 <input type="text" placeholder="Your answer" />
-			</div>
-			<div class="col s2  checkanswer">
-			 <a class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" onclick="Materialize.toast('This is your hint', 4000)">
-               Hint? 	                       
-             </a>
-			</div>
-			</div>
-			<!-- <label class="active grey-text text-darken-2" for="first_name2" style="font-size:18px;">Question 1</label>-->
-			</div>
-			
-			<div class="row"><div class="col s12">
-			<a class="btn" style="margin-left:75%; margin-bottom: 1%;" onclick="Materialize.toast('Right answer!', 4000)">SUBMIT</a>
-			</div></div>
-		  </div>
-		  </div> 
-		 </div>
-		  </div>  
-	    </div>
-		<!-- qs ends -->
 		<div class="row">
 	  <div class="col s12">
 	  <a class="btn-large" style="margin-left:43%; margin-bottom:2%;" onclick="Materialize.toast('Please fill all the answers', 4000)">
@@ -197,15 +154,14 @@ img { max-width:100% }
 	  
 	  
        </li> 
-	   <!-- SET 1 ends -->
-	   <!-- SET 2 begins -->
-      <li>
+
+      <li id="set2" class="disabled">
 	  <div class="collapsible-header teal lighten-4" style="padding-bottom:10px;min-height: 4em; line-height: 4em; font-weight:bold; font-size: 20px; text-align:center">
 	   SET 2</div>
 	   	<div class="collapsible-body">
 		 
 		
-		<!-- qs starts -->
+
 	  <div class="row">
 	   <br>
 		<div class="col s8 offset-s2">
@@ -224,7 +180,7 @@ img { max-width:100% }
              </a>
 			</div>
 			</div>
-			<!-- <label class="active grey-text text-darken-2" for="first_name2" style="font-size:18px;">Question 1</label>-->
+
 			</div>
 			
 			<div class="row"><div class="col s12">
@@ -235,10 +191,6 @@ img { max-width:100% }
 		 </div>
 		  </div>  
 	    </div>
-		<!-- qs ends -->
-	
-		
-		<!-- qs starts -->
 	   
 	   <br>
 		<div class="col s8 offset-s2">
@@ -257,7 +209,7 @@ img { max-width:100% }
              </a>
 			</div>
 			</div>
-			<!-- <label class="active grey-text text-darken-2" for="first_name2" style="font-size:18px;">Question 1</label>-->
+
 			</div>
 			
 			<div class="row"><div class="col s12">
@@ -268,9 +220,7 @@ img { max-width:100% }
 		 </div>
 		  </div>  
 	    </div>
-		<!-- qs ends -->
-		
-		<!-- qs starts -->
+
 	   
 	   <br>
 		<div class="col s8 offset-s2">
@@ -289,7 +239,7 @@ img { max-width:100% }
              </a>
 			</div>
 			</div>
-			<!-- <label class="active grey-text text-darken-2" for="first_name2" style="font-size:18px;">Question 1</label>-->
+			
 			</div>
 			
 			<div class="row"><div class="col s12">
@@ -447,11 +397,29 @@ img { max-width:100% }
 		</div>
         </footer>
         </div>
-		<script>
-		
-		</script>
-		 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/timer.js"></script>
+        <script type="text/javascript">      
+        var num = "<?php echo $_SESSION['user']['startTime']; ?>";
+        var start = new Date(num);
+        alert(start);    
+        var current = new Date();
+        alert(current);
+        //var now = new Date("04/09/2013 15:00:00");
+		//var then = new Date("01/03/2017 14:20:30");
+      	//alert(then);
+      	var diff = current - start;
+      	console.log(diff);
+      	
+      	var timing = Math.ceil(3600-(diff/1000)); 
+      	if(timing == 45)
+
+      	alert(timing);
+		//console.log(new Date().toLocaleTimeString());
+        window.onload = CreateTimer("timer", timing);
+        </script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+        
         <script type="text/javascript" src="js/utils.js"></script>
         <script type="text/javascript" src="js/register.js"></script>
 	</body>
