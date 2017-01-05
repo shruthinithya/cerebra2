@@ -2,11 +2,11 @@
 session_start();
 if(isset($_SESSION['user']))
 {
-	$emailId = $_SESSION['user']['emailId'];
+	$access_token = $_SESSION['user']['access_token'];
 	
 	$url = 'cms.cegtechforum.com/api/getQuestions';
 	$params =  json_encode(array(
-		"emailId" => $emailId
+		"access_token" => $access_token
 		));
 	$ch = curl_init( $url );
 	curl_setopt( $ch, CURLOPT_POST, 1);
@@ -21,18 +21,12 @@ if(isset($_SESSION['user']))
 	{
 		$response = json_decode($response, true);
 		$_SESSION['questions'] = $response['data'];
-		//print_r($_SESSION['practice']);
-		//header("Location: practice.php");
-	}
-	else
-	{
-		header("Location: index.php");
-	}
-	//header("Location: index.php");	
+		$_SESSION['current_time'] = $response['current_time'];
+	}	
 }
 else
 {
-	echo 3;
+	header("Location: index.php");
 }
 
 function sanitizeParams($param)
@@ -44,8 +38,7 @@ function sanitizeParams($param)
 	}
 	else
 	{
-		$_SESSION['questions'] = "failure";
-			//header("Location: index.php");
+		//handle else case
 	}
 }
 

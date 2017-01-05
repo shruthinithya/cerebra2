@@ -2,13 +2,13 @@
 session_start();
 if(isset($_SESSION['user']))
 {
-	$emailId = $_SESSION['user']['emailId'];
+	$access_token = $_SESSION['user']['access_token'];
 	$key = sanitizeParams($_POST['key']);
 	$answer = sanitizeParams($_POST['answer']);
 	
 	$url = 'cms.cegtechforum.com/api/submit';
 	$params =  json_encode(array(
-		"emailId" => $emailId,
+		"access_token" => $access_token,
 		'key' => $key,
 		'answer' => $answer
 		));

@@ -17,12 +17,17 @@ $("#login_form").submit(function(e) {
                 if(result == 1)
                 {
                     alert("success");
-                    window.location="GamePlay.php";
+                    window.location="Practice.php";
                 }
                 else if(result == 2)
                 {
                     alert("success");
                     window.location="GamePlay.php";
+                }
+                else if(result == 3)
+                {
+                    alert("success");
+                    window.location="Summary.php";
                 }
                 else
                     alert("failure");
@@ -52,8 +57,8 @@ $("#login_form").submit(function(e) {
 
 // practice round - validation answers
 function submitAnswer(e) { 
-    $('#e').hide();
-    $('.progress_loader').show();    
+    $(e).hide();
+    $(document.getElementById('pl_'+e.id)).show();
     answer = document.getElementById('answer_'+e.id).value;
     $.ajax
     ({ 
@@ -68,19 +73,24 @@ function submitAnswer(e) {
                 Materialize.toast('Right Answer!', 1000);
                 document.getElementById('answer_'+e.id).disabled = true;
                 document.getElementById(e.id).className = "btn disabled";
-                //var st = "<?php $response['state']?>";
-                //if(st > 1)
-                  //  alert(st);
+                $(document.getElementById('pl_'+e.id)).hide();
+                $(e).show();
             }
             else if(result['code']==0)
+            {
                 Materialize.toast('Dai thappudaa!', 1000);
+                $(document.getElementById('pl_'+e.id)).hide();
+                $(e).show();
+            }
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
             alert('error');          
+            $(document.getElementById('pl_'+e.id)).hide();
+            $(e).show();
         }
     });
-    $('.progress_loader').hide();
-    $('#e').show();
+
+
 }
 // pre run fetching questions
 function getset(m)

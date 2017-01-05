@@ -131,7 +131,7 @@ require 'getQuestions.php';
 
 												<div class="row"><div class="col s12">
 													<a class="btn ansbtn" style="margin-left:5%; margin-bottom: 1%;" id="<?php echo $_SESSION['questions'][$j]['key'] ?>" onclick="submitAnswer(this);">SUBMIT</a>
-													<div class="progress_loader" style="display:none;">Loading...</div>
+													<div class="progress_loader" id="pl_<?php echo $_SESSION['questions'][$j]['key'] ?>" style="display:none;">Loading...</div>
 												</div></div>
 											</div>
 										</div>  
@@ -182,14 +182,15 @@ require 'getQuestions.php';
 <!-- timer -->
 <script type="text/javascript" src="js/timer.js"></script>
 <script type="text/javascript">      
-	var num = "<?php echo $_SESSION['user']['startTime']; ?>";
-	var start = new Date(num);
-	var current = new Date();
-	var diff = current - start;
+	var startTime = new Date('<?php echo $_SESSION['user']['startTime']; ?>');
+	var currentTime = new Date('<?php echo $_SESSION['current_time']; ?>');
+	var diff = currentTime - startTime;
+	console.log(startTime);
+	console.log(currentTime);
 	console.log(diff);
 	
-	var timing = Math.ceil(3600-(diff/1000)-37); 
-
+	var timing = Math.ceil(3600-(diff/1000)); 
+	console.log(timing);
 	window.onload = CreateTimer("timer", timing);
 </script>
 
