@@ -3,11 +3,11 @@ var TotalSeconds;
 
 
 function CreateTimer(TimerID, Time) {
-Timer = document.getElementById(TimerID);
-TotalSeconds = Time;
+    Timer = document.getElementById(TimerID);
+    TotalSeconds = Time;
 
-UpdateTimer()
-window.setTimeout("Tick()", 1000);
+    UpdateTimer()
+    window.setTimeout("Tick()", 1000);
 }
 
 function Tick() {
@@ -16,53 +16,55 @@ function Tick() {
 		alert("Time up!")
 		window.location="logout.php";        
 	}
-	if(TotalSeconds == 2460)
+	if(TotalSeconds == 2820)
 	{
 		getNextLevel();		 
 	}
-TotalSeconds -= 1;
-UpdateTimer()
-window.setTimeout("Tick()", 1000);
+    TotalSeconds -= 1;
+    UpdateTimer()
+    window.setTimeout("Tick()", 1000);
 }
 
 function UpdateTimer() {
-var Seconds = TotalSeconds;
+    var Seconds = TotalSeconds;
 
-var Days = Math.floor(Seconds / 86400);
-Seconds -= Days * 86400;
+    var Days = Math.floor(Seconds / 86400);
+    Seconds -= Days * 86400;
 
-var Hours = Math.floor(Seconds / 3600);
-Seconds -= Hours * (3600);
+    var Hours = Math.floor(Seconds / 3600);
+    Seconds -= Hours * (3600);
 
-var Minutes = Math.floor(Seconds / 60);
-Seconds -= Minutes * (60);
-
-
-var TimeStr = ((Days > 0) ? Days + " days " : "") + LeadingZero(Hours) + ":" + LeadingZero(Minutes) + ":" + LeadingZero(Seconds)
+    var Minutes = Math.floor(Seconds / 60);
+    Seconds -= Minutes * (60);
 
 
-Timer.innerHTML = TimeStr;
+    var TimeStr = ((Days > 0) ? Days + " days " : "") + LeadingZero(Hours) + ":" + LeadingZero(Minutes) + ":" + LeadingZero(Seconds)
+
+
+    Timer.innerHTML = TimeStr;
 }
 function LeadingZero(Time) {
 
-return (Time < 10) ? "0" + Time : + Time;
+    return (Time < 10) ? "0" + Time : + Time;
 }
 function getNextLevel() {
- 	$.ajax
-        ({ 
-            url: 'getNextLevel.php',
-            type: 'post',
-            dataType: "json",
-            success: function(result)
-            {
-                if(result['state'] >= 1)
-                {
-                	alert(result['state']);
-                    /*var outer = document.createElement("li");
+  $.ajax
+  ({ 
+    url: 'getNextLevel.php',
+    type: 'post',
+    dataType: "json",
+    success: function(result)
+    {
+        alert(result['state']);
 
-                    var in1 = document.createElement("div");
-                    in1.className = "collapsible-header teal lighten-5";
-                    in1.style = "padding-bottom:10px;min-height: 4em; line-height: 4em; font-weight:bold; font-size: 20px; text-align:center";
+        if(result['state'] >= 1)
+        {
+           alert(result['state']);
+           var outer = document.createElement("li");
+
+           var in1 = document.createElement("div");
+           in1.className = "collapsible-header teal lighten-5";
+           in1.style = "padding-bottom:10px;min-height: 4em; line-height: 4em; font-weight:bold; font-size: 20px; text-align:center";
                     //check
                     in1.textContent = "SET "+result['state'];
                     
@@ -89,7 +91,8 @@ function getNextLevel() {
                     var in8 = document.createElement('div');
                     in8.className = "input-field col s11";
                     in8.style = "margin-top:0px; margin-left:15px; color:black;";
-                    var in9 = document.createElement('col s10');
+                    var in9 = document.createElement('div');
+                    in9.className = "col s10";
                     var input = document.createElement('input');    
                     //check below 3 statements
                     input.type = "text";
@@ -140,7 +143,7 @@ function getNextLevel() {
                     outer.append(in2);
                     outer.append(in1);
 
-                    document.getElementsByClassName("nextLevelQuestions")[0].append(outer);*/
+                    document.getElementsByClassName("collapsible popout")[0].append(outer);
                 }                
                 else
                     alert("failure");
@@ -150,7 +153,7 @@ function getNextLevel() {
                 alert('error');          
             }
         });
- } 
+} 
  /*function fetchingQuestions()
  {
     document.getElementById("menu").innerHTML = '<div class="collapsible-header teal lighten-5" style="padding-bottom:10px;min-height: 4em; line-height: 4em; font-weight:bold; font-size: 20px; text-align:center">

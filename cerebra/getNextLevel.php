@@ -20,7 +20,7 @@ if(isset($_SESSION['user']))
 	if (curl_getinfo($ch, CURLINFO_HTTP_CODE) == 200)
 	{
 		//$response = array('state' => $response, 'data' => $response);
-		echo json_encode($response);
+		echo $response;
 		//print_r($_SESSION['practice']);
 		//header("Location: practice.php");
 	}
