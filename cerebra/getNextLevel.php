@@ -19,9 +19,8 @@ if(isset($_SESSION['user']))
 	$response = curl_exec( $ch );
 	if (curl_getinfo($ch, CURLINFO_HTTP_CODE) == 200)
 	{
-		$response = json_decode($response, true);
-		$_SESSION['level'] = $response;
-		echo $response;
+		//$response = array('state' => $response, 'data' => $response);
+		echo json_encode($response);
 		//print_r($_SESSION['practice']);
 		//header("Location: practice.php");
 	}

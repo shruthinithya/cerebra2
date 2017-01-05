@@ -106,35 +106,33 @@ img { max-width:100% }
 	  <div class="row">
 	   <br>
 	   <?php
-	  // $_SESSION['practice'] = $question;
+	  // number of questions in each set
 	   for($j=0 ; $j<2 ; $j++){
     	//foreach ($_SESSION['practice'] as $question) { 
     	?>
 		<div class="col s8 offset-s2">
 		 <div class="card hoverable grey lighten-4">
-		  <div class="card-content">
-		  <div class="row">
-		  <div class="row"><div class="col s10" style="font-size:18px;margin-left:5px"><?php echo $_SESSION['questions'][$j]['question']; ?></div>
+		  <div class="card-content" style="padding-bottom: -15px;">
+
+		  <div class="col s10" style="font-size:18px;margin-left:5px"><?php echo $_SESSION['questions'][$j]['question']; ?></div>
+			
 			<div class="input-field col s11" style="margin-top:0px; margin-left:15px; color:black;">
-			<div class="row">
+
 			<div class="col s10">
-			 <input type="text" placeholder="Your answer" id="answer_<?php echo $_SESSION['questions'][$j]['key'] ?>"  type="text" class="validate"/>
+			 <input type="text" placeholder="Your answer" id="answer_<?php echo $_SESSION['questions'][$j]['key'] ?>" class="validate"/>
 			</div>
 			<div class="col s2  checkanswer">
 			 <a class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" onclick="Materialize.toast('This is your hint', 4000)">
                Hint? 	                       
              </a>
 			</div>
-			</div>
 			<!-- <label class="active grey-text text-darken-2" for="first_name2" style="font-size:18px;">Question 1</label>-->
 			</div>
 			
 			<div class="row"><div class="col s12">
-			<a class="btn ansbtn" style="margin-left:75%; margin-bottom: 1%;" id="<?php echo $_SESSION['questions'][$j]['key'] ?>" onclick="submitAnswer(this);">SUBMIT</a>
+			<a class="btn ansbtn" style="margin-left:5%; margin-bottom: 1%;" id="<?php echo $_SESSION['questions'][$j]['key'] ?>" onclick="submitAnswer(this);">SUBMIT</a>
 			<div class="progress_loader" style="display:none;">Loading...</div>
 			</div></div>
-		  </div>
-		  </div> 
 		 </div>
 		  </div>  
 	    </div>
@@ -142,7 +140,7 @@ img { max-width:100% }
 	    <?php
 		}
 		?>
-		<div class="row">
+
 	  <div class="col s12">
 	  <a class="btn-large" style="margin-left:43%; margin-bottom:2%;" onclick="Materialize.toast('Please fill all the answers', 4000)">
 	   SUBMIT SET
@@ -153,217 +151,7 @@ img { max-width:100% }
 		<?php
 		}
 		?>
-		<!--div class="nextLevelQuestions"></div-->
-      <!--li id="set2" class="disabled">
-	  <div class="collapsible-header teal lighten-4" style="padding-bottom:10px;min-height: 4em; line-height: 4em; font-weight:bold; font-size: 20px; text-align:center">
-	   SET 2</div>
-	   	<div class="collapsible-body">
-		 
-		
-
-	  <div class="row">
-	   <br>
-		<div class="col s8 offset-s2">
-		 <div class="card hoverable grey lighten-4">
-		  <div class="card-content">
-		  <div class="row">
-		  <div class="row"><div class="col s10" style="font-size:18px;margin-left:5px">Question 1</div>
-			<div class="input-field col s11" style="margin-top:0px; margin-left:15px; color:black;">
-			<div class="row">
-			<div class="col s10">
-			 <input type="text" placeholder="Your answer" />
-			</div>
-			<div class="col s2  checkanswer">
-			 <a class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" onclick="Materialize.toast('This is your hint', 4000)">
-               Hint? 	                       
-             </a>
-			</div>
-			</div>
-
-			</div>
-			
-			<div class="row"><div class="col s12">
-			<a class="btn" style="margin-left:75%; margin-bottom: 1%;" onclick="Materialize.toast('Right answer!', 4000)">SUBMIT</a>
-			</div></div>
-		  </div>
-		  </div> 
-		 </div>
-		  </div>  
-	    </div>
-	   
-	   <br>
-		<div class="col s8 offset-s2">
-		 <div class="card hoverable grey lighten-4">
-		  <div class="card-content">
-		  <div class="row">
-		  <div class="row"><div class="col s10" style="font-size:18px;margin-left:5px">Question 2</div>
-			<div class="input-field col s11" style="margin-top:0px; margin-left:15px; color:black;">
-			<div class="row">
-			<div class="col s10">
-			 <input type="text" placeholder="Your answer" />
-			</div>
-			<div class="col s2  checkanswer">
-			 <a class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" onclick="Materialize.toast('This is your hint', 4000)">
-               Hint? 	                       
-             </a>
-			</div>
-			</div>
-
-			</div>
-			
-			<div class="row"><div class="col s12">
-			<a class="btn" style="margin-left:75%; margin-bottom: 1%;" onclick="Materialize.toast('Right answer!', 4000)">SUBMIT</a>
-			</div></div>
-		  </div>
-		  </div> 
-		 </div>
-		  </div>  
-	    </div>
-
-	   
-	   <br>
-		<div class="col s8 offset-s2">
-		 <div class="card hoverable grey lighten-4">
-		  <div class="card-content">
-		  <div class="row">
-		  <div class="row"><div class="col s10" style="font-size:18px;margin-left:5px">Question 3</div>
-			<div class="input-field col s11" style="margin-top:0px; margin-left:15px; color:black;">
-			<div class="row">
-			<div class="col s10">
-			 <input type="text" placeholder="Your answer" />
-			</div>
-			<div class="col s2  checkanswer">
-			 <a class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" onclick="Materialize.toast('This is your hint', 4000)">
-               Hint? 	                       
-             </a>
-			</div>
-			</div>
-			
-			</div>
-			
-			<div class="row"><div class="col s12">
-			<a class="btn" style="margin-left:75%; margin-bottom: 1%;" onclick="Materialize.toast('Right answer!', 4000)">SUBMIT</a>
-			</div></div>
-		  </div>
-		  </div> 
-		 </div>
-		  </div>  
-	    </div>
-		
-		<div class="row">
-	  <div class="col s12">
-	  <a class="btn-large" style="margin-left:43%; margin-bottom:2%;" onclick="Materialize.toast('Please fill all the answers', 4000)">
-	   SUBMIT SET 2
-	   </a></div>
-	  </div>
-	  </div>
-	  
-	  </li>	
-
-	  <li>
-	  <div class="collapsible-header teal lighten-5" style="padding-bottom:10px;min-height: 4em; line-height: 4em; font-weight:bold; font-size: 20px; text-align:center">
-	   SET 3</div>
-	   	<div class="collapsible-body">
-		 
-		
-
-	  <div class="row">
-	   <br>
-		<div class="col s8 offset-s2">
-		 <div class="card hoverable grey lighten-4">
-		  <div class="card-content">
-		  <div class="row">
-		  <div class="row"><div class="col s10" style="font-size:18px;margin-left:5px">Question 1</div>
-			<div class="input-field col s11" style="margin-top:0px; margin-left:15px; color:black;">
-			<div class="row">
-			<div class="col s10">
-			 <input type="text" placeholder="Your answer" />
-			</div>
-			<div class="col s2  checkanswer">
-			 <a class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" onclick="Materialize.toast('This is your hint', 4000)">
-               Hint? 	                       
-             </a>
-			</div>
-			</div>
-
-			</div>
-			
-			<div class="row"><div class="col s12">
-			<a class="btn" style="margin-left:75%; margin-bottom: 1%;" onclick="Materialize.toast('Right answer!', 4000)">SUBMIT</a>
-			</div></div>
-		  </div>
-		  </div> 
-		 </div>
-		  </div>  
-	    </div>
-
-	   
-	   <br>
-		<div class="col s8 offset-s2">
-		 <div class="card hoverable grey lighten-4">
-		  <div class="card-content">
-		  <div class="row">
-		  <div class="row"><div class="col s10" style="font-size:18px;margin-left:5px">Question 2</div>
-			<div class="input-field col s11" style="margin-top:0px; margin-left:15px; color:black;">
-			<div class="row">
-			<div class="col s10">
-			 <input type="text" placeholder="Your answer" />
-			</div>
-			<div class="col s2  checkanswer">
-			 <a class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" onclick="Materialize.toast('This is your hint', 4000)">
-               Hint? 	                       
-             </a>
-			</div>
-			</div>
-			
-			</div>
-			
-			<div class="row"><div class="col s12">
-			<a class="btn" style="margin-left:75%; margin-bottom: 1%;" onclick="Materialize.toast('Right answer!', 4000)">SUBMIT</a>
-			</div></div>
-		  </div>
-		  </div> 
-		 </div>
-		  </div>  
-	    </div>
-	   
-	   <br>
-		<div class="col s8 offset-s2">
-		 <div class="card hoverable grey lighten-4">
-		  <div class="card-content">
-		  <div class="row">
-		  <div class="row"><div class="col s10" style="font-size:18px;margin-left:5px">Question 3</div>
-			<div class="input-field col s11" style="margin-top:0px; margin-left:15px; color:black;">
-			<div class="row">
-			<div class="col s10">
-			 <input type="text" placeholder="Your answer" />
-			</div>
-			<div class="col s2  checkanswer">
-			 <a class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" onclick="Materialize.toast('This is your hint', 4000)">
-               Hint? 	                       
-             </a>
-			</div>
-			</div>
-
-			</div>
-			
-			<div class="row"><div class="col s12">
-			<a class="btn" style="margin-left:75%; margin-bottom: 1%;" onclick="Materialize.toast('Right answer!', 4000)">SUBMIT</a>
-			</div></div>
-		  </div>
-		  </div> 
-		 </div>
-		  </div>  
-	    </div>
-
-		<div class="row">
-	  <div class="col s12">
-	  <a class="btn-large" style="margin-left:43%; margin-bottom:2%;" onclick="Materialize.toast('Please fill all the answers', 4000)">
-	   SUBMIT SET 3
-	   </a></div>
-	  </div>
-	  </div>
-	  </li-->
+		<div class="nextLevelQuestions"></div>		
 	  </ul>
 	</div>
     </div>
@@ -396,11 +184,11 @@ img { max-width:100% }
       	console.log(diff);
       	
       	var timing = Math.ceil(3600-(diff/1000)-37); 
-      	var mail = "<?php echo $_SESSION['user']['emailId']; ?>";
-      	//if(timing == 45)
-      	//	getset(mail);
-		//alert(timing);
+
         window.onload = CreateTimer("timer", timing);
+        </script>
+        <script type="text/javascript">
+        	getNextLevel();
         </script>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
