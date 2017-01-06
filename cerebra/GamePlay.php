@@ -110,7 +110,7 @@ require 'getQuestions.php';
 								for($j=0 ; $j<2 ; $j++){
     	//foreach ($_SESSION['practice'] as $question) { 
 									if (!array_key_exists($_SESSION['questions'][$j]['key'],$_SESSION['questions_answered']))
-									?>
+										?>
 									<div class="col s8 offset-s2">
 										<div class="card hoverable grey lighten-4">
 											<div class="card-content" style="padding-bottom: -15px;">
@@ -152,8 +152,7 @@ require 'getQuestions.php';
 						<?php
 					}
 					?>
-<!-- 					<div class="nextLevelQuestions"></div>		
- -->				</ul>
+				</ul>
 			</div>
 		</div>
 	</div>
