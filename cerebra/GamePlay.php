@@ -166,7 +166,7 @@ require 'getQuestions.php';
 													</div>
 													<div class="col s6 m1">
 														<a id="<?php echo $_SESSION['questions'][$j]['key'] ?>" class="btn-floating btn-large waves-effect waves-light black-text blue" onclick="getClue(this);">
-															 <i class="material-icons">done</i></a>      
+															 <i class="material-icons">lightbulb_outline</i></a>      
 														<div class="progress_loader" id="clue_<?php echo $_SESSION['questions'][$j]['key'] ?>" style="display:none;">Loading...</div>                
 													</div>
 													
