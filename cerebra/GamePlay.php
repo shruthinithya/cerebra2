@@ -96,7 +96,9 @@ require 'getQuestions.php';
 			<div id="game" class="col s12" align="center">
 				<ul class="collapsible popout" data-collapsible="accordion" style="width:100%; display: inline-block; text-align: left">
 
-					<?php for($i=0;$i<$_SESSION['user']['state'] ; $i++) { ?>
+					<?php 
+					$j = 0; $count =  0;
+					for($i=0;$i<$_SESSION['user']['state'] ; $i++) { ?>
 					<li>
 						<!-- SET begins -->
 						<div class="collapsible-header teal lighten-5" style="padding-bottom:10px;min-height: 4em; line-height: 4em; font-weight:bold; font-size: 20px; text-align:center">
@@ -105,11 +107,14 @@ require 'getQuestions.php';
 						<div class="collapsible-body">		 	
 							<div class="row">
 								<br>
-								<?php
+								<?php								
 	  // number of questions in each set
-								for($j=0 ; $j<2 ; $j++){
-    	//foreach ($_SESSION['practice'] as $question) { 
-									if (!array_key_exists($_SESSION['questions'][$j]['key'],$_SESSION['questions_answered']))
+								for($k=0;$k<(sizeof($_SESSION['questions'])/$_SESSION['state']);$k++)
+								{
+									//echo $j ; 
+									if(!in_array($_SESSION['questions'][$j]['key'],$_SESSION['questions_answered']))
+									{									 
+									$count = 1;
 									?>
 									<div class="col s8 offset-s2">
 										<div class="card hoverable grey lighten-4">
@@ -123,7 +128,7 @@ require 'getQuestions.php';
 														<input type="text" placeholder="Your answer" id="answer_<?php echo $_SESSION['questions'][$j]['key'] ?>" class="validate"/>
 													</div>
 													<div class="col s2  checkanswer">
-														<a class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" onclick="Materialize.toast('This is your hint', 4000)">
+														<a id="<?php echo $_SESSION['questions'][$j]['key'] ?>" class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" onclick="getClue(this);">
 															Hint? 	                       
 														</a>
 													</div>
@@ -140,12 +145,17 @@ require 'getQuestions.php';
 
 									<?php
 								}
+								$j++;
+							}
+							if($count == 0)
+							{
 								?>
+								<p> You have answered all questions in this set.
+									<?php
 
-								<div class="col s12">
-									<a class="btn-large" style="margin-left:43%; margin-bottom:2%;" onclick="Materialize.toast('Please fill all the answers', 4000)">
-										SUBMIT SET
-									</a></div>
+							}
+								?>
+								
 								</div>
 							</div>
 						</li>
