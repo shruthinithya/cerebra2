@@ -3,10 +3,11 @@ session_start();
 if(isset($_SESSION['user']))
 {
 	$access_token = $_SESSION['user']['access_token'];
-	
-	$url = 'cms.cegtechforum.com/api/getQuestions';
+	$key = sanitizeParams($_POST['key']);
+	$url = 'cms.cegtechforum.com/api/getClue';
 	$params =  json_encode(array(
-		"access_token" => $access_token
+		"access_token" => $access_token,
+		'key' => $key
 		));
 	$ch = curl_init( $url );
 	curl_setopt( $ch, CURLOPT_POST, 1);
@@ -20,11 +21,20 @@ if(isset($_SESSION['user']))
 	if (curl_getinfo($ch, CURLINFO_HTTP_CODE) == 200)
 	{
 		$response = json_decode($response, true);
-		$_SESSION['questions'] = $response['data'];
-		$_SESSION['current_time'] = $response['current_time'];
-		$_SESSION['questions_answered'] = $response['questions_answered'];
-		$_SESSION['state'] = $response['state'];
-	}	
+
+		$response = array('code' => 1, 'clue' => $response['data']);
+		echo json_encode($response);		
+	}
+	else if(curl_getinfo($ch, CURLINFO_HTTP_CODE) == 401)
+	{
+		$response = array('code' => 2);
+		echo json_encode($response);		
+	}
+	else
+	{
+		$response = array('code' => 3);
+		echo json_encode($response);
+	}
 }
 else
 {

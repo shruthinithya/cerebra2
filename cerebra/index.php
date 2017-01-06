@@ -28,7 +28,6 @@ if (!isset($_SESSION['user']))
         opacity: 0.2 !important;
       }
       .page-footer {
-       position:fixed;
        bottom:0;
        width:100%;
        height:60px;   /* Height of the footer */

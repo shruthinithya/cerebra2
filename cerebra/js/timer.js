@@ -16,7 +16,7 @@ function Tick() {
 		alert("Time up!")
 		window.location="logout.php";        
 	}
-	if(TotalSeconds == 2700 || TotalSeconds == 1800 || TotalSeconds == 840)
+	if(TotalSeconds == 2700 || TotalSeconds == 1800 || TotalSeconds == 900)
 	{
 		getNextLevel();		 
 	}
@@ -57,6 +57,7 @@ function getNextLevel() {
     success: function(result)
     {
 
+     Materialize.toast('Next Set of Questions are open', 4000)   
      var outer = document.createElement("li");
 
      var in1 = document.createElement("div");

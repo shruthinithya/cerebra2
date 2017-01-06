@@ -89,31 +89,40 @@ function submitAnswer(e) {
             $(e).show();
         }
     });
-
-
 }
-// pre run fetching questions
-function getset(m)
-{
+
+function getClue(e) { 
+    $(e).hide();
+    $(document.getElementById('pl_'+e.id)).show();
+    alert(e.id);
     $.ajax
     ({ 
-        url: 'submit.php',
-        data: 'emailId=' + m,
+        url: 'getClue.php',
+        data: 'key=' + e.id,
         type: 'post',
         dataType: "json",
         success: function(result)
         {
+            alert(result['code']);
             if(result['code']==1)
             {
-                Materialize.toast('Right Answer!', 4000);
-                document.getElementById('answer_'+e.id).disabled = true;
-                document.getElementById(e.id).className = "btn disabled";
+                Materialize.toast(result['clue'], 5000);
+                $(document.getElementById('pl_'+e.id)).hide();
+                $(e).show();
             }
-            else if(result['code']==0)
-                Materialize.toast('Dai thappudaa!', 4000);
+            else if(result['code']==2)
+            {
+                Materialize.toast('You will get your hint only after next set opens', 1000);
+            }
+            else
+                Materialize.toast('asasd', 1000);
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
             alert('error');          
+            $(document.getElementById('pl_'+e.id)).hide();
+            $(e).show();
         }
     });
+
+
 }
