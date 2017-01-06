@@ -87,10 +87,10 @@ require 'getQuestions.php';
       <a href="//kurukshetra.org.in" class="brand-logo"><img class="responsive-img" src="img/k_logo.png" style="width: 250px"></a>
     </div>
     <div class="col s4">
-      <a href="#" class="brand-logo hide-on-med-and-down" id="timer" style="padding-top: 2px"></a>
+      <a href="#" class="brand-logo right hide-on-med-and-down" id="timer" style="padding-top: 2px"></a>
     </div>
     <div class="col s4">
-      <a href="logout.php" class="brand-logo">Logout</a>
+      <a href="logout.php">Logout</a>
     </div>
       <!--div class="col s2" id='timer'  style="font-size: 20px;" />
 		</div>
@@ -152,29 +152,25 @@ require 'getQuestions.php';
 										<div class="card hoverable grey lighten-4">
 											<div class="card-content" style="padding-bottom: -15px;">
 
-												<div class="col s12" style="font-size:18px;margin-left:5px"><?php echo $_SESSION['questions'][$j]['question']; ?></div>
+												<div class="col s10" style="font-size:18px;margin-left:5px"><?php echo $_SESSION['questions'][$j]['question']; ?></div>
 
 												<div class="input-field col s11" style="margin-top:0px; margin-left:15px; color:black;">
 
-													<div class="col s12 m9">
+													<div class="col s10">
 														<input type="text" placeholder="Your answer" id="answer_<?php echo $_SESSION['questions'][$j]['key'] ?>" class="validate"/>
 													</div>
-													<div class="col s6 m2">
-														<a class="btn-floating btn-large waves-effect waves-light" style="margin-left:5%; margin-bottom: 1%;" id="<?php echo $_SESSION['questions'][$j]['key'] ?>" onclick="submitAnswer(this);"><i class="material-icons">done</i></a>
-														<div class="progress_loader" id="pl_<?php echo $_SESSION['questions'][$j]['key'] ?>" style="display:none;">Loading...</div>
-													</div>
-													<div class="col s6 m1">
+													<div class="col s2  checkanswer">
 														<a id="<?php echo $_SESSION['questions'][$j]['key'] ?>" class="btn-floating btn-large waves-effect waves-light black-text blue" onclick="getClue(this);">
-															 <i class="material-icons">done</i></a>      
-														<div class="progress_loader" id="clue_<?php echo $_SESSION['questions'][$j]['key'] ?>" style="display:none;">Loading...</div>                
+															 <i class="material-icons">done</i>                      
+														</a>
 													</div>
-													
 													<!-- <label class="active grey-text text-darken-2" for="first_name2" style="font-size:18px;">Question 1</label>-->
 												</div>
 
-												<div class="row">
-												
-												</div>
+												<div class="row"><div class="col s12">
+													<a class="btn-floating btn-large waves-effect waves-light" style="margin-left:5%; margin-bottom: 1%;" id="<?php echo $_SESSION['questions'][$j]['key'] ?>" onclick="submitAnswer(this);"><i class="material-icons">done</i></a>
+													<div class="progress_loader" id="pl_<?php echo $_SESSION['questions'][$j]['key'] ?>" style="display:none;">Loading...</div>
+												</div></div>
 											</div>
 										</div>  
 									</div>

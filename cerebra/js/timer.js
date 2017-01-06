@@ -16,7 +16,7 @@ function Tick() {
 		alert("Time up!")
 		window.location="logout.php";        
 	}
-	if(TotalSeconds == 2700 || TotalSeconds == 1800 || TotalSeconds == 900)
+	if(TotalSeconds == 1140 || TotalSeconds == 1800 || TotalSeconds == 900)
 	{
 		getNextLevel();		 
 	}
