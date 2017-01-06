@@ -64,7 +64,7 @@ function getNextLevel() {
      in1.className = "collapsible-header teal lighten-5";
      in1.style = "padding-bottom:10px;min-height: 4em; line-height: 4em; font-weight:bold; font-size: 20px; text-align:center";
                     //check
-                    in1.textContent = "SET "+result['state'];
+                    in1.textContent = "SET "+result['user']['state'];
                     
                     var in2 = document.createElement('div');
                     in2.className = "collapsible-body";                    
@@ -81,71 +81,86 @@ function getNextLevel() {
                         var in6 = document.createElement('div');
                         in6.className = "card-content";
                         var in7 = document.createElement('div');
-                        in7.className = "col s10";
+                        in7.className = "col s12";
                         in7.style = "font-size:18px; margin-left:5px;"
-                    //check
-                    in7.textContent = result['data'][i]['question'];
+                        //check
+                        in7.textContent = result['data'][i]['question'];
 
-                    in6.append(in7);
+                        in6.append(in7);
 
-                    var in8 = document.createElement('div');
-                    in8.className = "input-field col s11";
-                    in8.style = "margin-top:0px; margin-left:15px; color:black;";
-                    var in9 = document.createElement('div');
-                    in9.className = "col s10";
-                    var input = document.createElement('input');    
-                    //check below 3 statements
-                    input.type = "text";
-                    input.placeholder = "Your answer";
-                    input.id = "answer_"+result['data'][i]['key'];
-                    input.className = "validate";
-                    in9.append(input);
+                        var in8 = document.createElement('div');
+                        in8.className = "input-field col s11";
+                        in8.style = "margin-top:0px; margin-left:15px; color:black;";
+                        var in9 = document.createElement('div');
+                        in9.className = "col s12 m9";
+                        var input = document.createElement('input');    
+                        //check below 3 statements
+                        input.type = "text";
+                        input.placeholder = "Your answer";
+                        input.id = "answer_"+result['data'][i]['key'];
+                        input.className = "validate";
+                        in9.append(input);
 
-                    var in10 = document.createElement('div');
-                    in10.className = "col s2  checkanswer";
-                    var in11 = document.createElement('a');
-                    in11.className = "btn-floating btn-large waves-effect waves-light teal lighten-3 black-text";
-                    //check
-                    in11.onclick = "Materialize.toast('This is your hint', 4000)";
-                    in11.textContent = "?";
-                    in10.append(in11);
+                        in8.append(in9);
 
-                    in8.append(in9);
-                    in8.append(in10);
-                    in6.append(in8);
+                        var in10 = document.createElement('div');
+                        in10.className = "col s6 m2";
+                        var in11 = document.createElement('a');
+                        in11.className = "btn-floating btn-large waves-effect waves-light";
+                        in11.style = "margin-left:5%; margin-bottom: 1%;"
+                        in11.id= result['data'][i]['key'];
+                        in11.onclick = function(){submitAnswer(this);}
+                        //check
+                        var button1 = document.createElement('i');
+                        button1.className = "material-icons";
+                        button1.textContent = "done";
 
-                    var in12 = document.createElement('div');
-                    in12.className = "row";
-                    var in13 = document.createElement('div');
-                    in13.className = "col s12";
-                    var in14 = document.createElement('a');
-                    in14.className = "btn ansbtn";
+                        in11.append(button1);
+                        in10.append(in11);
 
-                    in14.style = "margin-left:5%; margin-bottom: 1%;";
-                    //check below 2 statements
-                    in14.id = result['data'][i]['key'];
-                    // in14.addEventListener('click', function() {
-                    //     submitAnswer(this);
-                    // });
-                    in14.onclick = function(){submitAnswer(this);}
-                    in14.textContent = "SUBMIT";
+                        var pl1 = document.createElement('div');
+                        pl1.className = "progress_loader";
+                        pl1.id = result['data'][i]['key'];
+                        pl1.style = "display:none;"
+                        pl1.textContent = "Loading...";
 
-                    in13.append(in14);  
+                        in10.append(pl1);
 
-                    var loader = document.createElement('div');
-                    loader.className = "progress_loader";
-                    loader.style = "display:none;";              
-                    loader.textContent = "Loading...";
-                    loader.id = "pl_" + result['data'][i]['key'];
+                        in8.append(in10);
 
-                    in13.append(loader);
-                    in12.append(in13);
-                    in6.append(in12);
+                        var in12 = document.createElement('div');
+                        in12.className = "col s6 m1";
+                        var in13 = document.createElement('a');
+                        in13.className = "btn-floating btn-large waves-effect waves-light black-text blue";
+                        in13.id = result['data'][i]['key'];
+                        in13.onclick = function(){getClue(this);}
+                        //check
+                        var button2 = document.createElement('i');
+                        button2.className = "material-icons";
+                        button2.textContent = "done";
 
-                    in5.append(in6);
-                    in4.append(in5);
-                    in3.append(in4); 
-                }
+
+                        in13.append(button2);
+                        in12.append(in13);
+
+                        var pl2 = document.createElement('div');
+                        pl2.className = "progress_loader";
+                        pl2.id = "clue_" + result['data'][i]['key'];
+                        pl2.style = "display:none;"
+                        pl2.textContent = "Loading...";
+
+                        in12.append(pl2);
+                        in8.append(in12);
+                        
+                        in6.append(in8);    
+                        
+                        var in14 = document.createElement('div');
+                        in14.className = "row";
+                        in6.append(in14);
+                        in5.append(in6);
+                        in4.append(in5);
+                        in3.append(in4); 
+                    }
 
                 in2.append(in3);
                 outer.append(in1);
