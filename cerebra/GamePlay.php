@@ -90,7 +90,7 @@ require 'getQuestions.php';
 			<ul class="tabs" style="overflow-x: hidden;">
 				<li class="tab col s12 l4"><a class="active" href="#game" style="font-size:18px" >Game Play</a></li>
 				<li class="tab col s12 l4"><a href="#forum" style="font-size:18px" >Forum</a></li>
-				<li class="tab col s12 l4"><a href="#lb" style="font-size:18px" >Leaderboard</a></li>
+				<li class="tab col s12 l4"><a href="#lb" style="font-size:18px" onclick="getLeaderboard();">Leaderboard</a></li>
 			</ul>
 
 			<div id="game" class="col s12" align="center">

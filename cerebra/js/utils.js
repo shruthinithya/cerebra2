@@ -117,3 +117,8 @@ function getset(m)
         }
     });
 }
+function getLeaderboard()
+{
+    alert('sa');
+    $('ul.tabs').tabs('select_tab', '#lb');
+}
