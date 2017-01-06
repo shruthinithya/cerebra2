@@ -16,41 +16,38 @@ $("#login_form").submit(function(e) {
             {
                 if(result == 1)
                 {
-                    alert("success");
+                    Materialize.toast('Login Successful', 1000);
                     window.location="Practice.php";
                 }
                 else if(result == 2)
                 {
-                    alert("success");
+                    Materialize.toast('Login Successful', 1000);
                     window.location="GamePlay.php";
                 }
                 else if(result == 3)
                 {
-                    alert("success");
+                    Materialize.toast('Login Successful', 1000);
                     window.location="Summary.php";
                 }
                 else
-                    alert("failure");
+                    Materialize.toast('Login Failed', 1000);
+                $('.progress_loader').hide();
+                $('.login_submit').show();
                 
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) { 
-                alert('error');          
+                Materialize.toast('Error Logging in', 1000);
+                $('.progress_loader').hide();
+                $('.login_submit').show(); 
             }
         });
-        $('.progress_loader').hide();
-        $('.login_submit').show();
+
     }
     else
     {
-        BootstrapDialog.show({
-            title: 'Hey!',
-            message: 'Please enter valid credentials ðŸ˜’',
-            type: BootstrapDialog.TYPE_WARNING,
-            closable: true,
-            draggable: true
-        });
+        Materialize.toast('Enter Valid Credentials', 1000);
         $('.progress_loader').hide();
-        $('.login_submit').show();
+        $('.login_submit').show(); 
     }
     e.preventDefault();
 });
@@ -124,5 +121,9 @@ function getClue(e) {
         }
     });
 
-
+}
+function getLeaderboard()
+{
+    alert('sa');
+    $('ul.tabs').tabs('select_tab', '#lb');
 }

@@ -2,11 +2,11 @@
 session_start();
 if(isset($_SESSION['user']))
 {
-	$emailId = $_SESSION['user']['emailId'];
+	$access_token = $_SESSION['user']['access_token'];
 	
 	$url = 'cms.cegtechforum.com/api/practice';
 	$params =  json_encode(array(
-		"emailId" => $emailId
+		"access_token" => $access_token
 		));
 	$ch = curl_init( $url );
 	curl_setopt( $ch, CURLOPT_POST, 1);
