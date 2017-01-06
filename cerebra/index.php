@@ -32,15 +32,18 @@ if (!isset($_SESSION['user']))
   </head>
 
   <body>
-   <nav class="top-nav teal darken-2">
-    <div class="row">
-    </div>  
+   <nav class="top-nav teal darken-2" style="height: 100px">
+    <div class="nav-wrapper">
+      <a href="//kurukshetra.org.in" class="brand-logo"><img class="responsive-img" src="img/k_logo.png" style="width: 250px"></a>
+      <a href="#" class="brand-logo right hide-on-med-and-down" style="padding-top: 20px"><img class="responsive-img" src="img/ceg.png" style="width: 250px"></a>
+
+    </div>
   </nav>
   <div class="container" style="margin-top: 15vh; margin-bottom: 10vh; min-width: 200px">
     <div class="section">
       <div class="row">
        <div class="col s12 m6 push-m3 l6 push-l3">
-       <div class="card grey lighten-4">
+         <div class="card grey lighten-4">
           <div class="card-content">
             <center><span class="card-title grey-text text-darken-3"><b>Login</b></span></center>
             <form id="login_form" >
