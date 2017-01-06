@@ -109,6 +109,7 @@ require 'getQuestions.php';
 	  // number of questions in each set
 								for($j=0 ; $j<2 ; $j++){
     	//foreach ($_SESSION['practice'] as $question) { 
+									if (!array_key_exists($_SESSION['questions'][$j]['key'],$_SESSION['questions_answered']))
 									?>
 									<div class="col s8 offset-s2">
 										<div class="card hoverable grey lighten-4">
@@ -179,6 +180,9 @@ require 'getQuestions.php';
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
+<script type="text/javascript" src="js/utils.js"></script>
+
+
 <!-- timer -->
 <script type="text/javascript" src="js/timer.js"></script>
 <script type="text/javascript">      
@@ -195,7 +199,6 @@ require 'getQuestions.php';
 </script>
 
 
-<script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/register.js"></script>
 
 

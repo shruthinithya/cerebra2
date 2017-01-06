@@ -16,7 +16,7 @@ function Tick() {
 		alert("Time up!")
 		window.location="logout.php";        
 	}
-	if(TotalSeconds == 900)
+	if(TotalSeconds == 2700 || TotalSeconds == 1800 || TotalSeconds == 840)
 	{
 		getNextLevel();		 
 	}
@@ -57,11 +57,11 @@ function getNextLevel() {
     success: function(result)
     {
 
-         var outer = document.createElement("li");
+     var outer = document.createElement("li");
 
-         var in1 = document.createElement("div");
-         in1.className = "collapsible-header teal lighten-5";
-         in1.style = "padding-bottom:10px;min-height: 4em; line-height: 4em; font-weight:bold; font-size: 20px; text-align:center";
+     var in1 = document.createElement("div");
+     in1.className = "collapsible-header teal lighten-5";
+     in1.style = "padding-bottom:10px;min-height: 4em; line-height: 4em; font-weight:bold; font-size: 20px; text-align:center";
                     //check
                     in1.textContent = "SET "+result['state'];
                     
@@ -71,17 +71,19 @@ function getNextLevel() {
                     var in3 = document.createElement('div');
                     in3.className = "row";                    
                     
-                    var in4 = document.createElement('div');
-                    in4.className = "col s8 offset-s2";
-                    var in5 = document.createElement('div');
-                    in5.className = "card hoverable grey lighten-4";
-                    var in6 = document.createElement('div');
-                    in6.className = "card-content";
-                    var in7 = document.createElement('div');
-                    in7.className = "col s10";
-                    in7.style = "font-size:18px; margin-left:5px;"
+                    for(var i = 0; i<result['data'].length;i++)
+                    {
+                        var in4 = document.createElement('div');
+                        in4.className = "col s8 offset-s2";
+                        var in5 = document.createElement('div');
+                        in5.className = "card hoverable grey lighten-4";
+                        var in6 = document.createElement('div');
+                        in6.className = "card-content";
+                        var in7 = document.createElement('div');
+                        in7.className = "col s10";
+                        in7.style = "font-size:18px; margin-left:5px;"
                     //check
-                    in7.textContent = result[''];
+                    in7.textContent = result['data'][i]['question'];
 
                     in6.append(in7);
 
@@ -94,7 +96,7 @@ function getNextLevel() {
                     //check below 3 statements
                     input.type = "text";
                     input.placeholder = "Your answer";
-                    //input.id = "answer_"+result['data'][0]['key'];
+                    input.id = "answer_"+result['data'][i]['key'];
                     input.className = "validate";
                     in9.append(input);
 
@@ -117,10 +119,14 @@ function getNextLevel() {
                     in13.className = "col s12";
                     var in14 = document.createElement('a');
                     in14.className = "btn ansbtn";
+
                     in14.style = "margin-left:5%; margin-bottom: 1%;";
                     //check below 2 statements
-                    //in14.id = result['data'][0]['question'];
-                    in14.onclick = "submitAnswer(this)";
+                    in14.id = result['data'][i]['key'];
+                    // in14.addEventListener('click', function() {
+                    //     submitAnswer(this);
+                    // });
+                    in14.onclick = function(){submitAnswer(this);}
                     in14.textContent = "SUBMIT";
 
                     in13.append(in14);  
@@ -129,18 +135,23 @@ function getNextLevel() {
                     loader.className = "progress_loader";
                     loader.style = "display:none;";              
                     loader.textContent = "Loading...";
+                    loader.id = "pl_" + result['data'][i]['key'];
+
                     in13.append(loader);
                     in12.append(in13);
                     in6.append(in12);
 
                     in5.append(in6);
                     in4.append(in5);
-                    in3.append(in4);   
-                    in2.append(in3);
-                    outer.append(in2);
-                    outer.append(in1);
+                    in3.append(in4); 
+                }
 
-                    document.getElementsByClassName("collapsible popout")[0].append(outer);
+                in2.append(in3);
+                outer.append(in1);
+                outer.append(in2);
+
+
+                document.getElementsByClassName("collapsible popout")[0].append(outer);
                 
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) { 

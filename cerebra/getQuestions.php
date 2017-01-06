@@ -22,6 +22,8 @@ if(isset($_SESSION['user']))
 		$response = json_decode($response, true);
 		$_SESSION['questions'] = $response['data'];
 		$_SESSION['current_time'] = $response['current_time'];
+		$_SESSION['questions_answered'] = $response['questions_answered'];
+		//$_SESSION['user']['questions_answered'] = array('questions_answered' => $response);
 	}	
 }
 else
