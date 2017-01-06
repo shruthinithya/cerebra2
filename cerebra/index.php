@@ -36,11 +36,11 @@ if (!isset($_SESSION['user']))
     <div class="row">
     </div>  
   </nav>
-  <div class="container" style="margin-top: 15vh; margin-bottom: 10vh">
+  <div class="container" style="margin-top: 15vh; margin-bottom: 10vh; min-width: 200px">
     <div class="section">
       <div class="row">
        <div class="col s12 m6 push-m3 l6 push-l3">
-        <div class="card">
+       <div class="card grey lighten-4">
           <div class="card-content">
             <center><span class="card-title grey-text text-darken-3"><b>Login</b></span></center>
             <form id="login_form" >
@@ -56,11 +56,15 @@ if (!isset($_SESSION['user']))
                   <label for="icon_telephone">Password</label>
                 </div>
               </div>
-              <div class="progress_loader" style="display:none;">Loading...</div>
-              <center><input type="submit" class="waves-effect waves-light btn login_submit" style="margin-bottom: 10px;" value="Login" autofocus=""></center>
+              <div class="progress_loader" style="display:none;"></div>
+              <center>
+                <button class="btn waves-effect waves-light login_submit" type="submit" name="action" style="margin-bottom: 10px;">
+                  Login
+                </button>
+              </center>            
             </form>
             <center>
-             <a href="http://kurukshetra.org.in/#/register" class="waves-effect waves-light btn" style="margin-bottom: 10px;">New Particpant? Register</a>
+             <a href="http://kurukshetra.org.in/#/register" class="waves-effect waves-light btn" style="margin-bottom: 10px;">Register</a>
            </center>
          </div>
        </div>
