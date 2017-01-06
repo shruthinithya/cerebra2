@@ -69,7 +69,7 @@ function submitAnswer(e) {
             {
                 Materialize.toast('Right Answer!', 1000);
                 document.getElementById('answer_'+e.id).disabled = true;
-                document.getElementById(e.id).className = "btn disabled";
+                document.getElementById(e.id).hide();
                 $(document.getElementById('pl_'+e.id)).hide();
                 $(e).show();
             }
@@ -90,7 +90,7 @@ function submitAnswer(e) {
 
 function getClue(e) { 
     $(e).hide();
-    $(document.getElementById('pl_'+e.id)).show();
+    $(document.getElementById('clue_'+e.id)).show();
     //alert(e.id);
     $.ajax
     ({ 
@@ -104,13 +104,14 @@ function getClue(e) {
             if(result['code']==1)
             {
                 Materialize.toast("Hint:" + result['clue'], 5000);
-                $(document.getElementById('pl_'+e.id)).hide();
+                $(document.getElementById('clue_'+e.id)).hide();
                 $(e).show();
             }
             else if(result['code']==2)
             {
+
                 Materialize.toast('You will get your hint only after next set opens', 4000);
-                $(document.getElementById('pl_'+e.id)).hide();
+                $(document.getElementById('clue_'+e.id)).hide();
                 $(e).show();
             }
             else
