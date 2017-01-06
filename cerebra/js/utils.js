@@ -91,7 +91,7 @@ function submitAnswer(e) {
 function getClue(e) { 
     $(e).hide();
     $(document.getElementById('pl_'+e.id)).show();
-    alert(e.id);
+    //alert(e.id);
     $.ajax
     ({ 
         url: 'getClue.php',
@@ -100,19 +100,26 @@ function getClue(e) {
         dataType: "json",
         success: function(result)
         {
-            alert(result['code']);
+            //alert(result['code']);
             if(result['code']==1)
             {
-                Materialize.toast(result['clue'], 5000);
+                Materialize.toast("Hint:" + result['clue'], 5000);
                 $(document.getElementById('pl_'+e.id)).hide();
                 $(e).show();
             }
             else if(result['code']==2)
             {
-                Materialize.toast('You will get your hint only after next set opens', 1000);
+                Materialize.toast('You will get your hint only after next set opens', 4000);
+                $(document.getElementById('pl_'+e.id)).hide();
+                $(e).show();
             }
             else
-                Materialize.toast('asasd', 1000);
+            {
+                Materialize.toast('Some error occured, try again', 1000);
+                $(document.getElementById('pl_'+e.id)).hide();
+                $(e).show();
+            }
+
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
             alert('error');          

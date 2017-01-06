@@ -23,7 +23,7 @@ if(isset($_SESSION['user']))
 		$_SESSION['questions'] = $response['data'];
 		$_SESSION['current_time'] = $response['current_time'];
 		$_SESSION['questions_answered'] = $response['questions_answered'];
-		$_SESSION['state'] = $response['state'];
+		$_SESSION['user']['state'] = $response['state'];
 	}	
 }
 else

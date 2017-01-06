@@ -61,18 +61,50 @@ require 'getQuestions.php';
 			pointer-events:none; 
 			opacity:0.6;         
 		}
+		.btn-floating.btn-large
+		{
+			width:36px;
+			height:36px;
+		}
+		.btn-floating.btn-large i
+		{
+			line-height : 16px;
+		}
+		.blue
+		{
+			background-color: #2314ac !important;
+		}
 
 	</style>
 	
 </head>
 
-<body style="overflow-x: hidden;"s>
-	<header>
+<body style="overflow-x: hidden;">
+<nav class="top-nav teal darken-2" style="height: 100px">
+    <div class="nav-wrapper">
+    <div class="row">
+    <div class="col s4">
+      <a href="//kurukshetra.org.in" class="brand-logo"><img class="responsive-img" src="img/k_logo.png" style="width: 250px"></a>
+    </div>
+    <div class="col s4">
+      <a href="#" class="brand-logo right hide-on-med-and-down" id="timer" style="padding-top: 2px"></a>
+    </div>
+    <div class="col s4">
+      <a href="logout.php">Logout</a>
+    </div>
+      <!--div class="col s2" id='timer'  style="font-size: 20px;" />
+		</div>
+		<div class="col s1" style="font-size: 20px;" /><a href="logout.php">Logout</a>
+		</div-->
+    </div>
+    </div>
+  </nav>
+	<!--header>
 		<nav class="top-nav teal" style="height:90px;">
 			<div class="row">
 				<div class="col s3"><a href="http://kurukshetra.org.in/" target="_blank"><img style="height:90px;width:250px; padding-left: 10px;" src="img/k orange white.png"/></a></div>
 				<div class="col s6 flow-text" style="text-align:center;font-size:60px;padding-top:15px;font-family:'Merienda One';font-style:italic">CEREBRA</div>
-				<!--div id="txt" style="font-size: 30px;"></div-->
+
 				<div class="col s2" id='timer'  style="font-size: 20px;" />
 			</div>
 			<div class="col s1" style="font-size: 20px;" /><a href="logout.php">Logout</a>
@@ -82,7 +114,7 @@ require 'getQuestions.php';
 <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
 
 </div>
-</header>
+</header-->
 <main>
 	<div class="container">
 
@@ -109,7 +141,7 @@ require 'getQuestions.php';
 								<br>
 								<?php								
 	  // number of questions in each set
-								for($k=0;$k<(sizeof($_SESSION['questions'])/$_SESSION['state']);$k++)
+								for($k=0;$k<(sizeof($_SESSION['questions'])/$_SESSION['user']['state']);$k++)
 								{
 									//echo $j ; 
 									if(!in_array($_SESSION['questions'][$j]['key'],$_SESSION['questions_answered']))
@@ -128,15 +160,15 @@ require 'getQuestions.php';
 														<input type="text" placeholder="Your answer" id="answer_<?php echo $_SESSION['questions'][$j]['key'] ?>" class="validate"/>
 													</div>
 													<div class="col s2  checkanswer">
-														<a id="<?php echo $_SESSION['questions'][$j]['key'] ?>" class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" onclick="getClue(this);">
-															Hint? 	                       
+														<a id="<?php echo $_SESSION['questions'][$j]['key'] ?>" class="btn-floating btn-large waves-effect waves-light black-text blue" onclick="getClue(this);">
+															 <i class="material-icons">done</i>                      
 														</a>
 													</div>
 													<!-- <label class="active grey-text text-darken-2" for="first_name2" style="font-size:18px;">Question 1</label>-->
 												</div>
 
 												<div class="row"><div class="col s12">
-													<a class="btn ansbtn" style="margin-left:5%; margin-bottom: 1%;" id="<?php echo $_SESSION['questions'][$j]['key'] ?>" onclick="submitAnswer(this);">SUBMIT</a>
+													<a class="btn-floating btn-large waves-effect waves-light" style="margin-left:5%; margin-bottom: 1%;" id="<?php echo $_SESSION['questions'][$j]['key'] ?>" onclick="submitAnswer(this);"><i class="material-icons">done</i></a>
 													<div class="progress_loader" id="pl_<?php echo $_SESSION['questions'][$j]['key'] ?>" style="display:none;">Loading...</div>
 												</div></div>
 											</div>
@@ -171,20 +203,6 @@ require 'getQuestions.php';
 
 </div>
 </main>
-<div class="footer flow-text teal">
-	<footer class="page-footer teal" style="height:60px;padding-top:5px">          
-		<div class="footer-copyright teal">
-
-			<div class="row center"> 
-				<div class="col s1"><img style="height:50px;width:100px; padding-left:0px;" src="img/logo 1.png"/></div>
-				<div class="col s1 offset-s1"><img style="height:40px;width:100px; padding-left: 0px;" src="img/logo 2.png"/></div>
-				<div class="col s4 offset-s1 center"><span class="flow-text" style="font-size:16px;color:white">Copyright 2016 @ CEG Tech Forum. All rights reserved.</span></div>
-				<div class="col s1 offset-s1"><img style="height:40px;width:80px; padding-left: 0px;" src="img/logo 3.png"/></div>
-				<div class="col s1 offset-s1"><img style="height:40px;width:100px; padding-left: 0px;" src="img/logo 4.png"/></div>
-			</div>
-		</div>
-	</footer>
-</div>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
