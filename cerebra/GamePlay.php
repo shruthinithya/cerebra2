@@ -80,25 +80,25 @@ require 'getQuestions.php';
 </head>
 
 <body style="overflow-x: hidden;">
-<nav class="top-nav teal darken-2" style="height: 100px">
-    <div class="nav-wrapper">
-    <div class="row">
-    <div class="col s4">
-      <a href="//kurukshetra.org.in" class="brand-logo"><img class="responsive-img" src="img/k_logo.png" style="width: 250px"></a>
-    </div>
-    <div class="col s4">
-      <a href="#" class="brand-logo right hide-on-med-and-down" id="timer" style="padding-top: 2px"></a>
-    </div>
-    <div class="col s4">
-      <a href="logout.php">Logout</a>
-    </div>
+	<nav class="top-nav teal darken-2" style="height: 100px">
+		<div class="nav-wrapper">
+			<div class="row">
+				<div class="col s4">
+					<a href="//kurukshetra.org.in" class="brand-logo"><img class="responsive-img" src="img/k_logo.png" style="width: 250px"></a>
+				</div>
+				<div class="col s4">
+					<a href="#" class="brand-logo right hide-on-med-and-down" id="timer" style="padding-top: 2px"></a>
+				</div>
+				<div class="col s4">
+					<a href="logout.php">Logout</a>
+				</div>
       <!--div class="col s2" id='timer'  style="font-size: 20px;" />
 		</div>
 		<div class="col s1" style="font-size: 20px;" /><a href="logout.php">Logout</a>
-		</div-->
-    </div>
-    </div>
-  </nav>
+	</div-->
+</div>
+</div>
+</nav>
 	<!--header>
 		<nav class="top-nav teal" style="height:90px;">
 			<div class="row">
@@ -146,48 +146,48 @@ require 'getQuestions.php';
 									//echo $j ; 
 									if(!in_array($_SESSION['questions'][$j]['key'],$_SESSION['questions_answered']))
 									{									 
-									$count = 1;
-									?>
-									<div class="col s8 offset-s2">
-										<div class="card hoverable grey lighten-4">
-											<div class="card-content" style="padding-bottom: -15px;">
+										$count = 1;
+										?>
+										<div class="col s8 offset-s2">
+											<div class="card hoverable grey lighten-4">
+												<div class="card-content" style="padding-bottom: -15px;">
 
-												<div class="col s10" style="font-size:18px;margin-left:5px"><?php echo $_SESSION['questions'][$j]['question']; ?></div>
+													<div class="col s10" style="font-size:18px;margin-left:5px"><?php echo $_SESSION['questions'][$j]['question']; ?></div>
 
-												<div class="input-field col s11" style="margin-top:0px; margin-left:15px; color:black;">
+													<div class="input-field col s11" style="margin-top:0px; margin-left:15px; color:black;">
 
-													<div class="col s10">
-														<input type="text" placeholder="Your answer" id="answer_<?php echo $_SESSION['questions'][$j]['key'] ?>" class="validate"/>
+														<div class="col s10">
+															<input type="text" placeholder="Your answer" id="answer_<?php echo $_SESSION['questions'][$j]['key'] ?>" class="validate"/>
+														</div>
+														<div class="col s2  checkanswer">
+															<a id="<?php echo $_SESSION['questions'][$j]['key'] ?>" class="btn-floating btn-large waves-effect waves-light black-text blue" onclick="getClue(this);">
+																<i class="material-icons">done</i>                      
+															</a>
+														</div>
+														<!-- <label class="active grey-text text-darken-2" for="first_name2" style="font-size:18px;">Question 1</label>-->
 													</div>
-													<div class="col s2  checkanswer">
-														<a id="<?php echo $_SESSION['questions'][$j]['key'] ?>" class="btn-floating btn-large waves-effect waves-light black-text blue" onclick="getClue(this);">
-															 <i class="material-icons">done</i>                      
-														</a>
-													</div>
-													<!-- <label class="active grey-text text-darken-2" for="first_name2" style="font-size:18px;">Question 1</label>-->
+
+													<div class="row"><div class="col s12">
+														<a class="btn-floating btn-large waves-effect waves-light" style="margin-left:5%; margin-bottom: 1%;" id="<?php echo $_SESSION['questions'][$j]['key'] ?>" onclick="submitAnswer(this);"><i class="material-icons">done</i></a>
+														<div class="progress_loader" id="pl_<?php echo $_SESSION['questions'][$j]['key'] ?>" style="display:none;">Loading...</div>
+													</div></div>
 												</div>
+											</div>  
+										</div>
 
-												<div class="row"><div class="col s12">
-													<a class="btn-floating btn-large waves-effect waves-light" style="margin-left:5%; margin-bottom: 1%;" id="<?php echo $_SESSION['questions'][$j]['key'] ?>" onclick="submitAnswer(this);"><i class="material-icons">done</i></a>
-													<div class="progress_loader" id="pl_<?php echo $_SESSION['questions'][$j]['key'] ?>" style="display:none;">Loading...</div>
-												</div></div>
-											</div>
-										</div>  
-									</div>
-
-									<?php
+										<?php
+									}
+									$j++;
 								}
-								$j++;
-							}
-							if($count == 0)
-							{
-								?>
-								<p> You have answered all questions in this set.
-									<?php
+								if($count == 0)
+								{
+									?>
+									<p> You have answered all questions in this set.
+										<?php
 
-							}
-								?>
-								
+									}
+									?>
+
 								</div>
 							</div>
 						</li>
@@ -211,18 +211,38 @@ require 'getQuestions.php';
 
 
 <!-- timer -->
-<script type="text/javascript" src="js/timer.js"></script>
-<script type="text/javascript">      
-	var startTime = new Date('<?php echo $_SESSION['user']['startTime']; ?>');
-	var currentTime = new Date('<?php echo $_SESSION['current_time']; ?>');
-	var diff = currentTime - startTime;
-	console.log(startTime);
-	console.log(currentTime);
-	console.log(diff);
-	
-	var timing = Math.ceil(3600-(diff/1000)); 
-	console.log(timing);
-	window.onload = CreateTimer("timer", timing);
+<script type="text/javascript" src="js/countdown.min.js"></script>
+<script type="text/javascript">   
+	$(document).ready(function() {
+
+		// var startTime = new Date('<?php echo $_SESSION['user']['startTime']; ?>');
+		// var currentTime = new Date('<?php echo $_SESSION['current_time']; ?>');
+		// var diff = currentTime - startTime;
+		// console.log(startTime);
+		// console.log(currentTime);
+		// console.log(diff);
+
+		// var timing = Math.ceil(3600-(diff/1000)); 
+		// console.log(timing);
+		// CreateTimer("timer", timing);
+
+		var startTime = new Date('<?php echo $_SESSION['user']['startTime']; ?>');
+		var endTime = new Date(startTime.getFullYear(), startTime.getMonth(), startTime.getDate(), startTime.getHours()+1, startTime.getMinutes(), startTime.getSeconds(), startTime.getMilliseconds());
+		setInterval(function(){
+			var seconds = countdown(null, endTime).seconds;
+			$('#timer')[0].innerHTML = countdown(null, endTime).minutes + ':' + ((seconds < 10) ? "0" + seconds : + seconds);
+		}, 1000);
+		setInterval(function(){
+			var diff = Math.round(countdown( null , endTime).value/1000);
+			if(diff == 2700 || diff == 1800 || diff == 900)
+			{
+				getNextLevel();		 
+			}
+
+		}, 1000);
+
+	});
+
 </script>
 
 
