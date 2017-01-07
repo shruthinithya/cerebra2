@@ -72,12 +72,15 @@ function submitAnswer(e) {
                 //document.getElementById(e.id).hide();
                 $(document.getElementById('pl_'+e.id)).hide();
                 $(e).hide();
+                //document.getElementById(points) = result['points'];
+                document.getElementsByClassName("points")[0].append(result['points']);
             }
             else if(result['code']==0)
             {
                 Materialize.toast('Dai thappudaa!', 1000);
                 $(document.getElementById('pl_'+e.id)).hide();
                 $(e).show();
+                document.getElementsByClassName("points")[0].append(result['points']);
             }
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
