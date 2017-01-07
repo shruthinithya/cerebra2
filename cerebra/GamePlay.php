@@ -2,6 +2,7 @@
 require 'getQuestions.php';
 if (isset($_SESSION['user']))
 {
+
 	if ($_SESSION['user']['state'] > 0 && $_SESSION['user']['state'] < 5)
 	{
 		?>
@@ -76,17 +77,27 @@ if (isset($_SESSION['user']))
 					background-color: #2314ac !important;
 				}
 			</style>
-
+			
 		</head>
 
 		<body style="overflow-x: hidden;">
-			<nav class="top-nav teal darken-2" style="height: 80px">
+			<nav class="top-nav teal darken-2" style="min-height: 100px">
 				<div class="nav-wrapper">
-					<a href="//kurukshetra.org.in" class="left"><img class="responsive-img" src="img/k_logo.png" style="width: 200px"></a>
-					<a class="brand-logo right" href="logout.php" style="padding-top: 10px" >
-						<i class="large material-icons">power_settings_new</i>
-					</a>    
-
+					<div class="row">
+						<div class="col s12 m4">
+							<a href="//kurukshetra.org.in" class="brand-logo"><img class="responsive-img" src="img/k_logo.png" style="width: 250px"></a>
+						</div>
+						<div class="col s6 m5"class="brand-logo">
+							<p class="flow-text">MAIN RUN</p>
+						</div>
+						<div class="col s12 m2">
+							<p class="brand-logo" id="timer" ></p>
+						</div>
+						<div class="col s6 m1 right">
+							<a class="brand-logo" href="logout.php" style="padding-top: 30px;"><i class="large material-icons" style="font-size: 35px;">power_settings_new</i></a>
+							<!--a >Logout</a-->
+						</div>
+					</div>
 				</div>
 			</nav>
 			<main>
@@ -96,7 +107,7 @@ if (isset($_SESSION['user']))
 						<ul class="tabs" >
 							<li class="tab col s12 l4"><a class="active" href="#game" style="font-size:18px" >Game Play</a></li>
 							<li class="tab col s12 l4"><a href="#lb" style="font-size:18px" onclick="getLeaderboard();">Leaderboard</a></li>
-							<p class="right col s12 l4 points" style="font-size: 25px; margin-top: 5px;">Points:</p>
+							<p class="right col s12 l4 points" id="points" style="font-size: 25px; margin-top: 5px;">Points: <?php echo $_SESSION['user']['points'] ?></p>
 						</ul>
 
 						<div id="game" class="col s12" align="center">
