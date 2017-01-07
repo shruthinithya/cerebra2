@@ -51,25 +51,22 @@ if (isset($_SESSION['user']))
             <div class="card hoverable grey lighten-4">
               <div class="card-content" style="padding-bottom: -15px;">
 
-                <div class="col s10" style="font-size:18px;margin-left:5px"><?php echo $question['question'] ?></div>
+                <div class="col s12" style="font-size:18px;margin-left:5px"><?php echo $question['question'] ?></div>
 
                 <div class="input-field col s11" style="margin-top:0px; margin-left:15px; color:black;">
 
-                  <div class="col s10">
+                  <div class="col s10 m9">
                     <input type="text" placeholder="Your answer" id="answer_<?php echo $question['key'] ?>" class="validate"/>
                   </div>
-                  <div class="col s2  checkanswer">
-                    <a class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" onclick="Materialize.toast('This is your hint', 4000)">
-                      Hint?                          
+                  <div class="col s2 m3">
+                    <a class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" style="margin-left:5%; margin-bottom: 1%;" id="<?php echo $question['key'] ?>" onclick="submitAnswer(this);">
+                      <i class="material-icons">done</i>
                     </a>
-                  </div>
-                  <!-- <label class="active grey-text text-darken-2" for="first_name2" style="font-size:18px;">Question 1</label>-->
+                    <div class="progress_loader" id="pl_<?php echo $question['key'] ?>" style="display:none;">Loading...</div>
+                  </div>                  
                 </div>
 
-                <div class="row"><div class="col s12">
-                  <a class="btn ansbtn" style="margin-left:5%; margin-bottom: 1%;" id="<?php echo $question['key'] ?>" onclick="submitAnswer(this);">SUBMIT</a>
-                  <div class="progress_loader" id="pl_<?php echo $question['key'] ?>" style="display:none;"></div>
-                </div></div>
+                <div class="row"></div>
               </div>
             </div>  
           </div>
