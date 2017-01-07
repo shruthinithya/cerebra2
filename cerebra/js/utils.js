@@ -76,16 +76,14 @@ function submitAnswer(e) {
                 $(document.getElementById('pl_'+e.id)).hide();
                 $(document.getElementById('clue_'+e.id)).hide();
                 $(e).hide();
-                //document.getElementById("points").innerHTML = result['data']['points'];
-                //document.getElementsByClassName("points")[0].append(result['data']['points']);
+                document.getElementById("points").innerHTML = result['data']['points'];
             }
             else if(result['code']==0)
             {
                 Materialize.toast('Dai thappudaa!', 1000);
                 $(document.getElementById('pl_'+e.id)).hide();
                 $(e).show();
-                //document.getElementById("points").innerHTML = result['data']['points'];
-                //document.getElementsByClassName("points")[0].append(result['data']['points']);
+                document.getElementById("points").innerHTML = result['data']['points'];                
             }
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
@@ -214,7 +212,9 @@ function getNextLevel() {
     success: function(result)
     {
 
-       Materialize.toast('Next Set of Questions are open', 4000)   
+       Materialize.toast('Next Set of Questions are open', 4000) 
+       if(result['user']['state'] == 4)
+         Materialize.toast('This is your final set. NO CLUES WILL BE PROVIDED!', 4000) 
        var outer = document.createElement("li");
 
        var in1 = document.createElement("div");

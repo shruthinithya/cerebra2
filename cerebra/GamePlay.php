@@ -95,7 +95,7 @@ if (isset($_SESSION['user']))
 							<a class="waves-effect waves-light btn" id="timer"></a>
 						</div>
 						<div class="col s6">
-							<a class="waves-effect waves-light btn" id="timer">12:03</a>
+							<a class="waves-effect waves-light btn" id="points">Points:<?php echo $_SESSION['user']['points'] ?></a>
 						</div>					</div>
 						<div class="row" style="padding-top:80px;">
 							<ul class="tabs" >
@@ -214,7 +214,11 @@ if (isset($_SESSION['user']))
 			$('#timer')[0].innerHTML = countdown(null, endTime).minutes + ':' + ((seconds < 10) ? "0" + seconds : + seconds);
 		}, 1000);
 		setInterval(function(){
+			//console.log(startTime);
+			//console.log(endTime);
+			
 			var diff = Math.round(countdown( null , endTime).value/1000);
+			console.log(diff);
 			if(diff == 2700 || diff == 1800 || diff == 900)
 			{
 				getNextLevel();		 
