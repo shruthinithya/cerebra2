@@ -59,7 +59,7 @@ if (isset($_SESSION['user']))
         if(!in_array($question['key'],$_SESSION['user']['questions_answered']))
         {                  
         
-        ?>        
+        ?>  
         <div class="row">
           <div class="col s8 offset-s2">
             <div class="card hoverable grey lighten-4">
@@ -73,8 +73,8 @@ if (isset($_SESSION['user']))
                     <input type="text" placeholder="Your answer" id="answer_<?php echo $question['key'] ?>" class="validate"/>
                   </div>
                   <div class="col s2 m3">
-                    <a class="btn-floating btn-large waves-effect waves-light teal lighten-3 black-text" style="margin-left:5%; margin-bottom: 1%;" id="<?php echo $question['key'] ?>" onclick="submitAnswer(this);">
-                      <i class="material-icons">done</i>
+                    <a class="btn-floating btn-large waves-effect waves-light black-text" style="margin-left:5%; margin-bottom: 1%; width: 36px; height: 36px;" id="<?php echo $question['key'] ?>" onclick="submitAnswer(this);">
+                      <i class="material-icons" style="line-height: 1px;">done</i>
                     </a>
                     <div class="progress_loader" id="pl_<?php echo $question['key'] ?>" style="display:none;">Loading...</div>
                   </div>                  

@@ -67,7 +67,7 @@ function submitAnswer(e) {
         dataType: "json",
         success: function(result)
         {
-            console.log(result);
+            console.log(result[]);
             result['data'] = jQuery.parseJSON(result['data']);
             if(result['code']==1)
             {
@@ -212,9 +212,9 @@ function getNextLevel() {
     success: function(result)
     {
 
-       Materialize.toast('Next Set of Questions are open', 4000) 
+       Materialize.toast('Next Set of Questions are open', 4000);
        if(result['user']['state'] == 4)
-         Materialize.toast('This is your final set. NO CLUES WILL BE PROVIDED!', 4000) 
+         Materialize.toast('This is your final set. NO CLUES WILL BE PROVIDED!', 4000);
        var outer = document.createElement("li");
 
        var in1 = document.createElement("div");
