@@ -218,7 +218,6 @@ if (isset($_SESSION['user']))
 			//console.log(endTime);
 			
 			var diff = Math.round(countdown( null , endTime).value/1000);
-			console.log(diff);
 			if(diff == 2700 || diff == 1800 || diff == 900)
 			{
 				getNextLevel();		 

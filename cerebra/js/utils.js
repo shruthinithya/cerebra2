@@ -211,17 +211,17 @@ function getNextLevel() {
     dataType: 'json',
     success: function(result)
     {
-
-       Materialize.toast('Next Set of Questions are open', 4000);
-       if(result['user']['state'] == 4)
+       Materialize.toast('Next Set of Questions are open', 4000) 
+       if(result['state'] == 4)
          Materialize.toast('This is your final set. NO CLUES WILL BE PROVIDED!', 4000);
-       var outer = document.createElement("li");
+     var outer = document.createElement("li");
 
-       var in1 = document.createElement("div");
-       in1.className = "collapsible-header teal lighten-5";
-       in1.style = "padding-bottom:10px;min-height: 4em; line-height: 4em; font-weight:bold; font-size: 20px; text-align:center";
+
+     var in1 = document.createElement("div");
+     in1.className = "collapsible-header teal lighten-5";
+     in1.style = "padding-bottom:10px;min-height: 4em; line-height: 4em; font-weight:bold; font-size: 20px; text-align:center";
                     //check
-                    in1.textContent = "SET "+result['user']['state'];
+                    in1.textContent = "SET "+result['state'];
                     
                     var in2 = document.createElement('div');
                     in2.className = "collapsible-body";                    
@@ -319,16 +319,16 @@ function getNextLevel() {
                         in3.append(in4); 
                     }
 
-                in2.append(in3);
-                outer.append(in1);
-                outer.append(in2);
+                    in2.append(in3);
+                    outer.append(in1);
+                    outer.append(in2);
 
 
-                document.getElementsByClassName("collapsible popout")[0].append(outer);
-                
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown) { 
-                alert('error' + errorThrown);          
-            }
-        });
+                    document.getElementsByClassName("collapsible popout")[0].append(outer);
+                    
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                    alert('error' + errorThrown);          
+                }
+            });
 } 
