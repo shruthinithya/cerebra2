@@ -67,7 +67,7 @@ function submitAnswer(e) {
         dataType: "json",
         success: function(result)
         {
-            console.log(result[]);
+            console.log(result);
             result['data'] = jQuery.parseJSON(result['data']);
             if(result['code']==1)
             {
@@ -76,14 +76,16 @@ function submitAnswer(e) {
                 $(document.getElementById('pl_'+e.id)).hide();
                 $(document.getElementById('clue_'+e.id)).hide();
                 $(e).hide();
-                document.getElementById("points").innerHTML = result['data']['points'];
+                if(!result['data']['state'] == 0)
+                    document.getElementById("points").innerHTML = result['data']['points'];
             }
             else if(result['code']==0)
             {
                 Materialize.toast('Dai thappudaa!', 1000);
                 $(document.getElementById('pl_'+e.id)).hide();
                 $(e).show();
-                document.getElementById("points").innerHTML = result['data']['points'];                
+                if(!result['data']['state'] == 0)
+                    document.getElementById("points").innerHTML = result['data']['points'];                
             }
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
