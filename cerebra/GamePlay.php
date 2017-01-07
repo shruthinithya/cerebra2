@@ -80,16 +80,16 @@ require 'getQuestions.php';
 </head>
 
 <body style="overflow-x: hidden;">
-<nav class="top-nav teal darken-2" style="height: 100px">
+<nav class="top-nav teal darken-2" style="min-height: 100px">
     <div class="nav-wrapper">
     <div class="row">
-    <div class="col s6 m4">
+    <div class="col s12 m4">
       <a href="//kurukshetra.org.in" class="brand-logo"><img class="responsive-img" src="img/k_logo.png" style="width: 250px"></a>
     </div>
     <div class="col s6 m5"class="brand-logo">
-      <p style="font-size: 40px">MAIN RUN</p>
+      <p class="flow-text">MAIN RUN</p>
     </div>
-    <div class="col s6 m2" style="padding-bottom: 50px;">
+    <div class="col s12 m2">
       <p class="brand-logo" id="timer" ></p>
     </div>
     <div class="col s6 m1 right">
@@ -99,27 +99,11 @@ require 'getQuestions.php';
     </div>
     </div>
   </nav>
-	<!--header>
-		<nav class="top-nav teal" style="height:90px;">
-			<div class="row">
-				<div class="col s3"><a href="http://kurukshetra.org.in/" target="_blank"><img style="height:90px;width:250px; padding-left: 10px;" src="img/k orange white.png"/></a></div>
-				<div class="col s6 flow-text" style="text-align:center;font-size:60px;padding-top:15px;font-family:'Merienda One';font-style:italic">CEREBRA</div>
-
-				<div class="col s2" id='timer'  style="font-size: 20px;" />
-			</div>
-			<div class="col s1" style="font-size: 20px;" /><a href="logout.php">Logout</a>
-		</div>   
-	</div> 
-</nav>
-<div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
-
-</div>
-</header-->
 <main>
 	<div class="container">
 
 		<div class="row" style="padding-bottom:40px;">
-			<ul class="tabs" style="overflow-x: hidden;">
+			<ul class="tabs" >
 				<li class="tab col s12 l4"><a class="active" href="#game" style="font-size:18px" >Game Play</a></li>
 				<li class="tab col s12 l4"><a href="#forum" style="font-size:18px" >Forum</a></li>
 				<li class="tab col s12 l4"><a href="#lb" style="font-size:18px" onclick="getLeaderboard();">Leaderboard</a></li>
