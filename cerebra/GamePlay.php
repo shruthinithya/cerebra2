@@ -221,13 +221,14 @@ if (isset($_SESSION['user']))
 		var endTime = new Date(startTime.getFullYear(), startTime.getMonth(), startTime.getDate(), startTime.getHours()+1, startTime.getMinutes(), startTime.getSeconds(), startTime.getMilliseconds());
 		setInterval(function(){
 			var seconds = countdown(null, endTime).seconds;
-			$('#timer')[0].innerHTML = countdown(null, endTime).minutes + ':' + ((seconds < 10) ? "0" + seconds : + seconds);
+			$('#timer')[0].innerHTML = countdown(null, endTime).hours + ':' + countdown(null, endTime).minutes + ':' + ((seconds < 10) ? "0" + seconds : + seconds);
 		}, 1000);
 		setInterval(function(){
 			//console.log(startTime);
 			//console.log(endTime);
 			
 			var diff = Math.round(countdown( null , endTime).value/1000);
+			console.log(diff);
 			if(diff == 2700 || diff == 1800 || diff == 900)
 			{
 				getNextLevel();		 
