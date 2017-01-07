@@ -24,6 +24,8 @@ if(isset($_SESSION['user']))
 		$_SESSION['current_time'] = $response['current_time'];
 		$_SESSION['questions_answered'] = $response['questions_answered'];
 		$_SESSION['user']['state'] = $response['state'];
+		$_SESSION['user']['points'] = $response['points'];
+
 	}	
 }
 else
