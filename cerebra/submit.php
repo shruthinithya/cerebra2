@@ -28,7 +28,7 @@ if(isset($_SESSION['user']))
 	}
 	else
 	{
-		$response = array('code' => 0);
+		$response = array('code' => 0, 'data' => $response);
 		echo json_encode($response);
 	}
 	
