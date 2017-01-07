@@ -58,7 +58,7 @@ function submitAnswer(e) {
     $(document.getElementById('pl_'+e.id)).show();
     answer = document.getElementById('answer_'+e.id).value;
     console.log(e.id);
-    console.log(answer);
+    console.log(answer == "");
     $.ajax
     ({ 
         url: 'submit.php',
@@ -76,7 +76,7 @@ function submitAnswer(e) {
                 $(document.getElementById('pl_'+e.id)).hide();
                 $(document.getElementById('clue_'+e.id)).hide();
                 $(e).hide();
-                if(!result['data']['state'] == 0)
+                if(result['data']['questions_answered'].length > 10)
                     document.getElementById("points").innerHTML = result['data']['points'];
             }
             else if(result['code']==0)
@@ -139,6 +139,7 @@ function getClue(e) {
 }
 function getLeaderboard()
 {
+
     $('#lb').empty();
 
     $.ajax
@@ -213,15 +214,15 @@ function getNextLevel() {
     dataType: 'json',
     success: function(result)
     {
-       Materialize.toast('Next Set of Questions are open', 4000) 
-       if(result['state'] == 4)
-         Materialize.toast('This is your final set. NO CLUES WILL BE PROVIDED!', 4000);
-     var outer = document.createElement("li");
+     Materialize.toast('Next Set of Questions are open', 4000) 
+     if(result['state'] == 4)
+       Materialize.toast('This is your final set. NO CLUES WILL BE PROVIDED!', 4000);
+   var outer = document.createElement("li");
 
 
-     var in1 = document.createElement("div");
-     in1.className = "collapsible-header teal lighten-5";
-     in1.style = "padding-bottom:10px;min-height: 4em; line-height: 4em; font-weight:bold; font-size: 20px; text-align:center";
+   var in1 = document.createElement("div");
+   in1.className = "collapsible-header teal lighten-5";
+   in1.style = "padding-bottom:10px;min-height: 4em; line-height: 4em; font-weight:bold; font-size: 20px; text-align:center";
                     //check
                     in1.textContent = "SET "+result['state'];
                     
@@ -287,12 +288,14 @@ function getNextLevel() {
 
                         in8.append(in10);
 
-                        var in12 = document.createElement('div');
-                        in12.className = "col s6 m1";
-                        var in13 = document.createElement('a');
-                        in13.className = "btn-floating btn-large waves-effect waves-light black-text blue";
-                        in13.id = result['data'][i]['key'];
-                        in13.onclick = function(){getClue(this);}
+                        if(result['state'] < 4)
+                        {
+                            var in12 = document.createElement('div');
+                            in12.className = "col s6 m1";
+                            var in13 = document.createElement('a');
+                            in13.className = "btn-floating btn-large waves-effect waves-light black-text blue";
+                            in13.id = result['data'][i]['key'];
+                            in13.onclick = function(){getClue(this);}
                         //check
                         var button2 = document.createElement('i');
                         button2.className = "material-icons";
@@ -301,36 +304,38 @@ function getNextLevel() {
 
                         in13.append(button2);
                         in12.append(in13);
-
-                        var pl2 = document.createElement('div');
-                        pl2.className = "progress_loader";
-                        pl2.id = "clue_" + result['data'][i]['key'];
-                        pl2.style = "display:none;"
-                        pl2.textContent = "Loading...";
-
-                        in12.append(pl2);
                         in8.append(in12);
-                        
-                        in6.append(in8);    
-                        
-                        var in14 = document.createElement('div');
-                        in14.className = "row";
-                        in6.append(in14);
-                        in5.append(in6);
-                        in4.append(in5);
-                        in3.append(in4); 
                     }
 
-                    in2.append(in3);
-                    outer.append(in1);
-                    outer.append(in2);
 
+                    var pl2 = document.createElement('div');
+                    pl2.className = "progress_loader";
+                    pl2.id = "clue_" + result['data'][i]['key'];
+                    pl2.style = "display:none;"
+                    pl2.textContent = "Loading...";
 
-                    document.getElementsByClassName("collapsible popout")[0].append(outer);
+                    in12.append(pl2);
                     
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) { 
-                    alert('error' + errorThrown);          
+                    in6.append(in8);    
+                    
+                    var in14 = document.createElement('div');
+                    in14.className = "row";
+                    in6.append(in14);
+                    in5.append(in6);
+                    in4.append(in5);
+                    in3.append(in4); 
                 }
-            });
+
+                in2.append(in3);
+                outer.append(in1);
+                outer.append(in2);
+
+
+                document.getElementsByClassName("collapsible popout")[0].append(outer);
+                
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                alert('error' + errorThrown);          
+            }
+        });
 } 

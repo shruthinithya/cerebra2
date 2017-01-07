@@ -21,6 +21,8 @@ if(isset($_SESSION['user']))
 	{
 		$response = json_decode($response, true);
 		$_SESSION['practice'] = $response['data'];
+		$_SESSION['user']['questions_answered'] = $response['questions_answered'];
+
 		//print_r($_SESSION['practice']);
 		//header("Location: practice.php");
 	}

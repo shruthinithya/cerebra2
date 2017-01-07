@@ -48,7 +48,7 @@ if (isset($_SESSION['user']))
       <?php
       $count = 0;
       foreach ($_SESSION['practice'] as $question) { 
-        if(count($_SESSION['user']['questions_answered']) == count($question))
+        if(count($_SESSION['user']['questions_answered']) == count($_SESSION['practice']))
         {?>
         <center><button style="margin-top: 20%; font-size: 30px; height: 40px;" class="btn waves-effect waves-light" type="submit" name="action"><a href="GamePlay.php" style="color: #fff;">CLICK TO PROCEED TO MAIN GAME
     <i class="material-icons right">send</i></a>

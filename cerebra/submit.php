@@ -47,8 +47,7 @@ function sanitizeParams($param)
 	}
 	else
 	{
-		$_SESSION['practice'] = "failure";
-			//header("Location: index.php");
+		return "";
 	}
 }
 
