@@ -1,7 +1,10 @@
 <?php 
 require 'getQuestions.php';
-//require 'login.php';
-?>
+if (isset($_SESSION['user']))
+{
+  if ($_SESSION['user']['state'] > 0 && $_SESSION['user']['state'] < 5)
+  {
+    ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -243,3 +246,24 @@ require 'getQuestions.php';
 
 </body>
 </html>
+<?php
+}
+else
+{
+  switch ($_SESSION['user']['state']) {
+    case 5:
+    header("Location: summary.php");
+    break;
+    
+    case 0:
+    header("Location: practice.php");
+    break;
+  }
+}
+}
+else
+{
+  header("Location: index.php");
+
+}
+?>
