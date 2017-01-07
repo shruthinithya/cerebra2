@@ -65,6 +65,7 @@ function submitAnswer(e) {
         dataType: "json",
         success: function(result)
         {
+            alert(result['data']['points'])
             if(result['code']==1)
             {
                 Materialize.toast('Right Answer!', 1000);
@@ -72,7 +73,7 @@ function submitAnswer(e) {
                 //document.getElementById(e.id).hide();
                 $(document.getElementById('pl_'+e.id)).hide();
                 $(e).hide();
-                //document.getElementById(points) = result['points'];
+                //document.getElementById(points) = result['data']['points'];
                 document.getElementsByClassName("points")[0].append(result['points']);
             }
             else if(result['code']==0)
@@ -80,6 +81,7 @@ function submitAnswer(e) {
                 Materialize.toast('Dai thappudaa!', 1000);
                 $(document.getElementById('pl_'+e.id)).hide();
                 $(e).show();
+                //document.getElementById(points) = result['data']['points'];
                 document.getElementsByClassName("points")[0].append(result['points']);
             }
         },

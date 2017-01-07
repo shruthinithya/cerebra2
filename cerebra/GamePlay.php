@@ -35,7 +35,6 @@ require 'getQuestions.php';
 		}
 		.img-div { height:100%; width:100%;}
 		img { max-width:100% }
-
 		::-webkit-input-placeholder { /* WebKit, Blink, Edge */
 			color:#424242;
 		}
@@ -50,7 +49,6 @@ require 'getQuestions.php';
 		:-ms-input-placeholder { /* Internet Explorer 10-11 */
 			color: #424242;
 		}
-
 		.btn, .btn-floating
 		{
 			position: absolute; 
@@ -74,22 +72,21 @@ require 'getQuestions.php';
 		{
 			background-color: #2314ac !important;
 		}
-
 	</style>
 	
 </head>
 
 <body style="overflow-x: hidden;">
-<nav class="top-nav teal darken-2" style="height: 100px">
+<nav class="top-nav teal darken-2" style="min-height: 100px">
     <div class="nav-wrapper">
     <div class="row">
-    <div class="col s6 m4">
+    <div class="col s12 m4">
       <a href="//kurukshetra.org.in" class="brand-logo"><img class="responsive-img" src="img/k_logo.png" style="width: 250px"></a>
     </div>
     <div class="col s6 m5"class="brand-logo">
-      <p style="font-size: 40px">MAIN RUN</p>
+      <p class="flow-text">MAIN RUN</p>
     </div>
-    <div class="col s6 m2" style="padding-bottom: 50px;">
+    <div class="col s12 m2">
       <p class="brand-logo" id="timer" ></p>
     </div>
     <div class="col s6 m1 right">
@@ -99,34 +96,16 @@ require 'getQuestions.php';
     </div>
     </div>
   </nav>
-	<!--header>
-		<nav class="top-nav teal" style="height:90px;">
-			<div class="row">
-				<div class="col s3"><a href="http://kurukshetra.org.in/" target="_blank"><img style="height:90px;width:250px; padding-left: 10px;" src="img/k orange white.png"/></a></div>
-				<div class="col s6 flow-text" style="text-align:center;font-size:60px;padding-top:15px;font-family:'Merienda One';font-style:italic">CEREBRA</div>
-
-				<div class="col s2" id='timer'  style="font-size: 20px;" />
-			</div>
-			<div class="col s1" style="font-size: 20px;" /><a href="logout.php">Logout</a>
-		</div>   
-	</div> 
-</nav>
-<div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
-
-</div>
-</header-->
 <main>
 	<div class="container">
 
 		<div class="row" style="padding-bottom:40px;">
-			<ul class="tabs" style="overflow-x: hidden;">
-			<div class="row">
+			<ul class="tabs" >
 				<li class="tab col s12 l4"><a class="active" href="#game" style="font-size:18px" >Game Play</a></li>
 				<li class="tab col s12 l4"><a href="#lb" style="font-size:18px" onclick="getLeaderboard();">Leaderboard</a></li>
-				<p class="right col s12 l4 points" style="font-size:18px; margin-top: 10px; text-align: right;color:red;">Points:</p>
-			</div>
+				<p class="right col s12 l4 points" style="font-size: 25px; margin-top: 5px;">Points:</p>
 			</ul>
-			
+
 			<div id="game" class="col s12" align="center">
 				<ul class="collapsible popout" data-collapsible="accordion" style="width:100%; display: inline-block; text-align: left">
 
@@ -148,7 +127,6 @@ require 'getQuestions.php';
 									//echo $j ; 
 									if(!in_array($_SESSION['questions'][$j]['key'],$_SESSION['questions_answered']))
 									{									 
-
 									$count = 1;
 									?>
 									<div class="col s8 offset-s2">
@@ -191,7 +169,6 @@ require 'getQuestions.php';
 									?>
 									<p> You have answered all questions in this set.
 										<?php
-
 									}
 									?>
 
@@ -223,18 +200,15 @@ require 'getQuestions.php';
 <script type="text/javascript" src="js/countdown.min.js"></script>
 <script type="text/javascript">   
 	$(document).ready(function() {
-
 		// var startTime = new Date('<?php echo $_SESSION['user']['startTime']; ?>');
 		// var currentTime = new Date('<?php echo $_SESSION['current_time']; ?>');
 		// var diff = currentTime - startTime;
 		// console.log(startTime);
 		// console.log(currentTime);
 		// console.log(diff);
-
 		// var timing = Math.ceil(3600-(diff/1000)); 
 		// console.log(timing);
 		// CreateTimer("timer", timing);
-
 		var startTime = new Date('<?php echo $_SESSION['user']['startTime']; ?>');
 		var endTime = new Date(startTime.getFullYear(), startTime.getMonth(), startTime.getDate(), startTime.getHours()+1, startTime.getMinutes(), startTime.getSeconds(), startTime.getMilliseconds());
 		setInterval(function(){
@@ -247,11 +221,8 @@ require 'getQuestions.php';
 			{
 				getNextLevel();		 
 			}
-
 		}, 1000);
-
 	});
-
 </script>
 
 
