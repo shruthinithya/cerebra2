@@ -33,10 +33,10 @@ if (!isset($_SESSION['user']))
   </head>
 
   <body>
-   <nav class="top-nav teal darken-2" style="height: 100px">
+   <nav class="top-nav teal darken-2" style="height: 80px">
     <div class="nav-wrapper">
-      <a href="//kurukshetra.org.in" class="brand-logo"><img class="responsive-img" src="img/k_logo.png" style="width: 250px"></a>
-      <a href="#" class="brand-logo right hide-on-med-and-down" style="padding-top: 20px"><img class="responsive-img" src="img/ceg.png" style="width: 250px"></a>
+      <a href="//kurukshetra.org.in" class="brand-logo"><img class="responsive-img" src="img/k_logo.png" style="width: 200px"></a>
+      <a href="#" class="brand-logo right hide-on-med-and-down" style="padding-top: 20px"><img class="responsive-img" src="img/ceg.png" style="width: 200px"></a>
 
     </div>
   </nav>
@@ -76,14 +76,6 @@ if (!isset($_SESSION['user']))
    </div>
  </div>
 </div>
-<!-- <footer class="page-footer teal darken-2" style="padding-top: 0px">
-  <div class="footer-copyright">
-    <div class="container">
-      © 2014 Copyright Text
-      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-    </div>
-  </div>
-</footer> -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>

@@ -57,6 +57,8 @@ function submitAnswer(e) {
     $(e).hide();
     $(document.getElementById('pl_'+e.id)).show();
     answer = document.getElementById('answer_'+e.id).value;
+    console.log(e.id);
+    console.log(answer);
     $.ajax
     ({ 
         url: 'submit.php',
@@ -65,8 +67,8 @@ function submitAnswer(e) {
         dataType: "json",
         success: function(result)
         {
+            console.log(result);
             result['data'] = jQuery.parseJSON(result['data']);
-            //alert(result['data']['points']);
             if(result['code']==1)
             {
                 Materialize.toast('Right Answer!', 1000);
