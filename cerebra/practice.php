@@ -34,10 +34,12 @@ if (isset($_SESSION['user']))
     </head>
 
     <body>
-     <nav class="top-nav teal darken-2" style="height: 100px">
+     <nav class="top-nav teal darken-2" style="height: 80px">
       <div class="nav-wrapper">
-        <a href="//kurukshetra.org.in" class="brand-logo"><img class="responsive-img" src="img/k_logo.png" style="width: 250px"></a>
-        <a href="#" class="brand-logo right hide-on-med-and-down" style="padding-top: 20px"><img class="responsive-img" src="img/ceg.png" style="width: 250px"></a>
+        <a href="//kurukshetra.org.in" class="left"><img class="responsive-img" src="img/k_logo.png" style="width: 200px"></a>
+        <a class="brand-logo right" href="logout.php" style="padding-top: 10px" >
+          <i class="large material-icons">power_settings_new</i>
+        </a>    
 
       </div>
     </nav>
