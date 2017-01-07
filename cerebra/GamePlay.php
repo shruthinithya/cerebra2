@@ -106,7 +106,7 @@ if (isset($_SESSION['user']))
 			<ul class="tabs" >
 				<li class="tab col s12 l4"><a class="active" href="#game" style="font-size:18px" >Game Play</a></li>
 				<li class="tab col s12 l4"><a href="#lb" style="font-size:18px" onclick="getLeaderboard();">Leaderboard</a></li>
-				<p class="right col s12 l4 points" style="font-size: 25px; margin-top: 5px;">Points:</p>
+				<p class="right col s12 l4 points" id="points" style="font-size: 25px; margin-top: 5px;">Points: <?php echo $_SESSION['user']['points'] ?></p>
 			</ul>
 
 			<div id="game" class="col s12" align="center">
