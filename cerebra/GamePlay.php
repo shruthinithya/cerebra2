@@ -148,16 +148,7 @@ if (isset($_SESSION['user']))
 																	<div class="col s6 m2">
 																		<a class="btn-floating btn-large waves-effect waves-light" style="margin-left:5%; margin-bottom: 1%;" id="<?php echo $_SESSION['questions'][$j]['key'] ?>" onclick="submitAnswer(this);"><i class="material-icons">done</i></a>
 																		<div class="progress_loader" id="pl_<?php echo $_SESSION['questions'][$j]['key'] ?>" style="display:none;">Loading...</div>
-																	</div>
-																	<?php if ($i < 3) {?>
-																		<div class="col s6 m1">
-																			<a id="<?php echo $_SESSION['questions'][$j]['key'] ?>" class="btn-floating btn-large waves-effect waves-light black-text blue" onclick="getClue(this);">
-																				<i class="material-icons">lightbulb_outline</i></a>      
-																				<div class="progress_loader" id="clue_<?php echo $_SESSION['questions'][$j]['key'] ?>" style="display:none;">Loading...</div>                
-																			</div>
-																			<?php } ?>
-
-																			<!-- <label class="active grey-text text-darken-2" for="first_name2" style="font-size:18px;">Question 1</label>-->
+																	</div>																	
 																		</div>
 
 																		<div class="row">
