@@ -70,6 +70,11 @@ if (!isset($_SESSION['user']))
             <center>
              <a href="http://kurukshetra.org.in/#/register" class="waves-effect waves-light btn" style="margin-bottom: 10px;">Register</a>
            </center>
+
+         </div>
+         <div class="col s12 teal darken-2">
+         <span class="flow-text white-text" style="font-size: 20px;">Powered By</span>
+           <img class="responsive-img" src="img/sponsor.png" style="width: 200px">
          </div>
        </div>
      </div>
