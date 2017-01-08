@@ -80,7 +80,7 @@ function submitAnswer(e) {
             }
             else if(result['code']==0)
             {
-                Materialize.toast('Dai thappudaa!', 1000);
+                Materialize.toast('Wrong answer!', 1000);
                 $(document.getElementById('pl_'+e.id)).hide();
                 $(e).show();
                 if(!result['data']['state'] == 0)
@@ -337,3 +337,7 @@ function getNextLevel() {
                 }
             });
 } 
+function getState()
+{
+    
+}

@@ -47,18 +47,20 @@ if (isset($_SESSION['user']))
     <div class="container">
     <div class="col s12">
               <p class="flow-text center-align">
-              <a>Practice Level</a>&nbsp;              
+              <a>Practice Level</a>&nbsp;  
         </div>  
       <?php
       $count = 0;
       foreach ($_SESSION['practice'] as $question) { 
         if(count($_SESSION['user']['questions_answered']) == count($_SESSION['practice']))
-        {?>
-        <center><button style="margin-top: 20%; font-size: 30px; height: 40px;" class="btn waves-effect waves-light" type="submit" name="action"><a href="GamePlay.php" style="color: #fff;">CLICK TO PROCEED TO MAIN GAME
+        {
+          header("Location: GamePlay.php");
+         ?>
+         <!-- <center><button style="margin-top: 20%; font-size: 30px; height: 40px;" class="btn waves-effect waves-light" type="submit" name="action"><a href="GamePlay.php" style="color: #fff;">CLICK TO PROCEED TO MAIN GAME
     <i class="material-icons right">send</i></a>
-  </button></center>
+  </button></center> -->
         <?php    
-        break;
+        //break;
         }
         if(!in_array($question['key'],$_SESSION['user']['questions_answered']))
         {                  
@@ -72,9 +74,9 @@ if (isset($_SESSION['user']))
 
                 <div class="col s12" style="font-size:18px;margin-left:5px"><?php echo $question['question'] ?></div>
 
-                <div class="input-field col s12" style="margin-top:0px; margin-left:15px; color:black;">
+                <div class="input-field" style="margin-top:0px; margin-left:15px; color:black;">
 
-                  <div class="col s10">
+                  <div class="col s9">
                     <input type="text" placeholder="Your answer" id="answer_<?php echo $question['key'] ?>" class="validate"/>
                   </div>
                   <div class="col s2">
@@ -95,6 +97,9 @@ if (isset($_SESSION['user']))
       }
     }
       ?>
+      <center>
+        <a style="font-size: 22px;">Proceed to next level<i class="material-icons">arrow_forward</i></a>
+      </center>
     </div>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
