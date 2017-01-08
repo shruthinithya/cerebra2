@@ -209,7 +209,10 @@ if (isset($_SESSION['user']))
 		// console.log(timing);
 		// CreateTimer("timer", timing);
 		var startTime = new Date('<?php echo $_SESSION['user']['startTime']; ?>');
-		var endTime = new Date(startTime.getFullYear(), startTime.getMonth(), startTime.getDate(), startTime.getHours()+1, startTime.getMinutes(), startTime.getSeconds(), startTime.getMilliseconds());
+		var endTime = new Date(startTime.getFullYear(), startTime.getMonth(), startTime.getDate(), startTime.getHours(), startTime.getMinutes()+59, startTime.getSeconds()+18, startTime.getMilliseconds());
+		console.log(startTime);
+		console.log(endTime);
+		console.log(countdown(null, endTime));
 		setInterval(function(){
 			var seconds = countdown(null, endTime).seconds;
 			$('#timer')[0].innerHTML = countdown(null, endTime).hours + ':' + countdown(null, endTime).minutes + ':' + ((seconds < 10) ? "0" + seconds : + seconds);

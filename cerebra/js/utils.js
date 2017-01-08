@@ -305,7 +305,6 @@ function getState()
         dataType: "json",
         success: function(result)
         {
-           // alert(result);
             if(result['state']==1)
             {
                 window.location.href = "GamePlay.php";
