@@ -218,13 +218,14 @@ function getNextLevel() {
 
 
      var in1 = document.createElement("div");
-     in1.className = "collapsible-header teal lighten-5";
+     in1.className = "collapsible-header grey lighten-4 z-depth-2";
      in1.style = "padding-bottom:10px;min-height: 4em; line-height: 4em; font-weight:bold; font-size: 20px; text-align:center";
                     //check
                     in1.textContent = "SET "+result['state'];
                     
                     var in2 = document.createElement('div');
-                    in2.className = "collapsible-body";                    
+                    in2.className = "collapsible-body z-depth-2";   
+
                     
                     var in3 = document.createElement('div');
                     in3.className = "row";                    
