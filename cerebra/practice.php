@@ -80,10 +80,10 @@ if (isset($_SESSION['user']))
 
                 <div class="input-field" style="margin-top:0px; margin-left:15px; color:black;">
 
-                  <div class="col s9">
+                  <div class="col s12 m9">
                     <input type="text" placeholder="Your answer" id="answer_<?php echo $question['key'] ?>" class="validate"/>
                   </div>
-                  <div class="col s2">
+                  <div class="col s6 m2">
                     <a class="btn-floating btn-large waves-effect waves-light black-text" style="margin-left:5%; margin-bottom: 1%; width: 36px; height: 36px; background-color:#39a558;" id="<?php echo $question['key'] ?>" onclick="submitAnswer(this);">
                       <i class="material-icons" style="line-height: 1px;">done</i>
                     </a>
@@ -119,7 +119,7 @@ else
 {
   switch ($_SESSION['user']['state']) {
     case 5:
-    header("Location: summary.php");
+    header("Location: Summary.php");
     break;
     
     default:

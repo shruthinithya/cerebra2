@@ -48,7 +48,9 @@ if (isset($_SESSION['user']))
 
     <div class="container" style="margin-top: 15vh; margin-bottom: 10vh; min-width: 200px">
       <h4 class='center-align'>Leaderboard</h4>
-      <div id="lb" class="col s12" align="center">
+      <div id="lb" class="col s12" align="center" style="padding-top: 40px">
+        <div class="progress_loader" id="lbloader" style="display:none;">Loading...</div>
+        <div id="leaderboard"></div>
       </div>
     </div>
 

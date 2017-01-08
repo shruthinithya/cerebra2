@@ -179,7 +179,8 @@ if (isset($_SESSION['user']))
 								</ul>
 							</div>
 							<div id="lb" class="col s12" align="center" style="padding-top: 40px">
-
+								<div class="progress_loader" id="lbloader" style="display:none;">Loading...</div>
+								<div id="leaderboard"></div>
 							</div>
 						</div>
 					</div>
@@ -249,7 +250,7 @@ else
 {
 	switch ($_SESSION['user']['state']) {
 		case 5:
-		header("Location: summary.php");
+		header("Location: Summary.php");
 		break;
 
 		case 0:

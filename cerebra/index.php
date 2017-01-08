@@ -95,14 +95,17 @@ else
   switch ($_SESSION['user']['state']) {
     case 0:
       # go to practice page
+    header("Location: practice.php");
     break;
 
     case 5:
       # go to summary page
+    header("Location: Summary.php");
     break;
     
     default:
       # go to game play
+    header("Location: GamePlay.php");
     break;
   }
 }

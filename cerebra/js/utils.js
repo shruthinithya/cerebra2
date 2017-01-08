@@ -16,7 +16,7 @@ $("#login_form").submit(function(e) {
                 if(result == 1)
                 {
                     Materialize.toast('Login Successful 😁', 1000);
-                    window.location="Practice.php";
+                    window.location="practice.php";
                 }
                 else if(result == 2)
                 {
@@ -96,8 +96,8 @@ function submitAnswer(e) {
 
 function getLeaderboard()
 {
-
-    $('#lb').empty();
+    $('#lbloader').show();
+    $('#leaderboard').empty();
 
     $.ajax
     ({ 
@@ -155,7 +155,8 @@ function getLeaderboard()
                 tbody.append(tr1);
             }
             divtable.append(tbody);
-            $("#lb").append(divtable);
+            $("#leaderboard").append(divtable);
+            $('#lbloader').hide();
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
             Materialize.toast('Some error occured. Please try after sometime 🙏', 1000);
