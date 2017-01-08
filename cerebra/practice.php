@@ -104,7 +104,7 @@ if (isset($_SESSION['user']))
       <center>
         <a onclick="getState();" style="font-size: 22px; cursor: pointer; cursor: hand;">Proceed to next level</a>
       </center>
-
+      <br/>
     </div>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

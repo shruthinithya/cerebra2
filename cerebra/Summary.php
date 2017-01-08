@@ -67,7 +67,7 @@ if (isset($_SESSION['user']))
     </script>
 
     <script type="text/javascript">
-      var updates = ["update 1", "update 2", "update 3"];
+      var updates = ["Dalal Bull Main Run starts on Jan 9, 6pm.", "Sherlock Event is on Jan 18.", "ROS Event is on Jan 20.", "OLPC Event is on Jan 22.", "Kurukshetra Hackathon is on Feb 3, 6pm.", "TDP submission is open for Contraptions.", "TDP submission is open for Robowars.", "TDP submission is open for Godspeed."];
       setInterval(function(){
         var index =  Math.floor(Math.random() * (2 - 0 + 1)) + 0;
         Materialize.toast(updates[index], 1000);

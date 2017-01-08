@@ -113,7 +113,7 @@ function getLeaderboard()
             th1.textContent = "Rank";
             //th1.data-field = "rank";
             var th2 = document.createElement('th');
-            th2.textContent = "Email-id";
+            th2.textContent = "Player";
            // th1.data-field = "email";
            var th3 = document.createElement('th');
            th3.textContent = "Points";
@@ -140,15 +140,19 @@ function getLeaderboard()
                 tr1.append(td13);
                 tbody.append(tr1);
             }
+            result['your_rank'] = 29;
+
             if(result['your_rank'] > 10)
             {
+
                 tr1 = document.createElement('tr');
+                tr1.className = "lighten-3 grey";
                 td11 = document.createElement('td');
-                td11.textContent = 11;
+                td11.textContent = result['your_rank'];
                 td12 = document.createElement('td');
-                td12.textContent = result['leaderboard'][i]['emailId'];
+                td12.textContent = "You";
                 td13 = document.createElement('td');
-                td13.textContent = "points";
+                td13.textContent = result['your_points'];
                 tr1.append(td11);
                 tr1.append(td12);
                 tr1.append(td13);
@@ -248,29 +252,7 @@ function getNextLevel() {
                         var in12 = document.createElement('div');
                         in12.className = "col s6 m1";
 
-                        if(result['state']!=4)
-                        {                        
-                            var in13 = document.createElement('a');
-                            in13.className = "btn-floating btn-large waves-effect waves-light black-text blue";
-                            in13.id = "cl_"+result['data'][i]['key'];
-                            in13.onclick = function(){getClue(this);}
-                            //check
-                            var button2 = document.createElement('i');
-                            button2.className = "material-icons";
-                            button2.textContent = "lightbulb_outline";
-
-
-                            in13.append(button2);
-                            in12.append(in13);
-
-                            var pl2 = document.createElement('div');
-                            pl2.className = "progress_loader";
-                            pl2.id = "clue_" + result['data'][i]['key'];
-                            pl2.style = "display:none;"
-                            pl2.textContent = "Loading...";
-
-                            in12.append(pl2);
-                        }    
+                            
                         in8.append(in12);
                         in6.append(in8);    
                         

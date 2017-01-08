@@ -107,7 +107,7 @@ if (isset($_SESSION['user']))
 							<ul class="tabs" >
 								<li class="tab col s12 l4"><a class="active" href="#game" style="font-size:18px" >Game Play</a></li>
 								<li class="tab col s12 l4"><a href="#lb" style="font-size:18px" onclick="getLeaderboard();">Leaderboard</a></li>
-								<li class="tab col s12 l4"><a href="#htp" style="font-size:18px">How To Play</a></li>
+								<li class="tab col s12 l4"><a href="#htp" style="font-size:18px">Instructions</a></li>
 
 							</ul>
 
@@ -181,6 +181,19 @@ if (isset($_SESSION['user']))
 							<div id="lb" class="col s12" align="center" style="padding-top: 40px">
 								<div class="progress_loader" id="lbloader" style="display:none;">Loading...</div>
 								<div id="leaderboard"></div>
+							</div>
+							<div id="htp">
+							<ul style="line-height: 25px;">
+								<li>The event has two rounds: Qualifier and the Final Round</li>
+								<li>Qualifier round has 10 questions and no time limit.</li>
+								<li>The participant has to solve all the questions in the qualifier round to appear for the Final Round.</li>
+								<li>The final round consists of Four Sets with 10 questions per set.</li>
+								<li>Each set will appear after every 15 minutes.</li>
+								<li>The faster the questions are solved, more the bonus points.</li>
+								<li>The participants can switch between sets in the final round.</li>
+								<li>Enter the numerical values for answers without space, without unit.</li>
+								<li>The winners will be declared post the event and will be intimated by the organisers soon after.</li>
+							</ul>
 							</div>
 						</div>
 					</div>
