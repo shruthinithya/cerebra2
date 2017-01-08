@@ -1,4 +1,3 @@
-
 // handle login
 $("#login_form").submit(function(e) { 
     $('.progress_loader').show();
