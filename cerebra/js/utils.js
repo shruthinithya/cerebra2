@@ -73,7 +73,7 @@ function submitAnswer(e) {
                 Materialize.toast('Right Answer!', 1000);
                 document.getElementById('answer_'+e.id).disabled = true;
                 $(document.getElementById('pl_'+e.id)).hide();
-                $(document.getElementById('clue_'+e.id)).hide();
+                $(document.getElementById('cl_'+e.id)).hide();
                 $(e).hide();
                 if(result['data']['questions_answered'].length > 10)
                     document.getElementById("points").innerHTML = result['data']['points'];
@@ -294,7 +294,7 @@ function getNextLevel() {
                         {                        
                             var in13 = document.createElement('a');
                             in13.className = "btn-floating btn-large waves-effect waves-light black-text blue";
-                            in13.id = result['data'][i]['key'];
+                            in13.id = "cl_"+result['data'][i]['key'];
                             in13.onclick = function(){getClue(this);}
                             //check
                             var button2 = document.createElement('i');
@@ -339,5 +339,27 @@ function getNextLevel() {
 } 
 function getState()
 {
-    
+    $.ajax
+    ({ 
+        url: 'myState.php',
+        type: 'post',
+        dataType: "json",
+        success: function(result)
+        {
+           // alert(result);
+            if(result['state']==1)
+            {
+                window.location.href = "GamePlay.php";
+            }
+            else if(result['state']==0)
+            {
+                Materialize.toast('Complete all questions to proceed to next level', 4000);                
+            }            
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) { 
+            alert('error');          
+            $(document.getElementById('clue_'+e.id)).hide();
+            $(e).show();
+        }
+    });
 }

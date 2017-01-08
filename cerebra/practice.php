@@ -98,7 +98,7 @@ if (isset($_SESSION['user']))
     }
       ?>
       <center>
-        <a style="font-size: 22px;">Proceed to next level<i class="material-icons">arrow_forward</i></a>
+        <a onclick="getState();" style="font-size: 22px; cursor: pointer; cursor: hand;">Proceed to next level<i class="material-icons">arrow_forward</i></a>
       </center>
     </div>
 
