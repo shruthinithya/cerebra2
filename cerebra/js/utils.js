@@ -289,27 +289,31 @@ function getNextLevel() {
 
                         var in12 = document.createElement('div');
                         in12.className = "col s6 m1";
-                        var in13 = document.createElement('a');
-                        in13.className = "btn-floating btn-large waves-effect waves-light black-text blue";
-                        in13.id = result['data'][i]['key'];
-                        in13.onclick = function(){getClue(this);}
-                        //check
-                        var button2 = document.createElement('i');
-                        button2.className = "material-icons";
-                        button2.textContent = "done";
+
+                        if(result['state']!=4)
+                        {                        
+                            var in13 = document.createElement('a');
+                            in13.className = "btn-floating btn-large waves-effect waves-light black-text blue";
+                            in13.id = result['data'][i]['key'];
+                            in13.onclick = function(){getClue(this);}
+                            //check
+                            var button2 = document.createElement('i');
+                            button2.className = "material-icons";
+                            button2.textContent = "lightbulb_outline";
 
 
-                        in13.append(button2);
-                        in12.append(in13);
+                            in13.append(button2);
+                            in12.append(in13);
 
-                        var pl2 = document.createElement('div');
-                        pl2.className = "progress_loader";
-                        pl2.id = "clue_" + result['data'][i]['key'];
-                        pl2.style = "display:none;"
-                        pl2.textContent = "Loading...";
+                            var pl2 = document.createElement('div');
+                            pl2.className = "progress_loader";
+                            pl2.id = "clue_" + result['data'][i]['key'];
+                            pl2.style = "display:none;"
+                            pl2.textContent = "Loading...";
 
-                        in12.append(pl2);
-                        
+                            in12.append(pl2);
+                        }    
+                        in8.append(in12);
                         in6.append(in8);    
                         
                         var in14 = document.createElement('div');

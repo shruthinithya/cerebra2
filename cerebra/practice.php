@@ -45,6 +45,10 @@ if (isset($_SESSION['user']))
     </nav>
 
     <div class="container">
+    <div class="col s12">
+              <p class="flow-text center-align">
+              <a>Practice Level</a>&nbsp;              
+        </div>  
       <?php
       $count = 0;
       foreach ($_SESSION['practice'] as $question) { 
@@ -59,7 +63,8 @@ if (isset($_SESSION['user']))
         if(!in_array($question['key'],$_SESSION['user']['questions_answered']))
         {                  
         
-        ?>  
+        ?>
+        
         <div class="row">
           <div class="col s8 offset-s2">
             <div class="card hoverable grey lighten-4">
@@ -67,12 +72,12 @@ if (isset($_SESSION['user']))
 
                 <div class="col s12" style="font-size:18px;margin-left:5px"><?php echo $question['question'] ?></div>
 
-                <div class="input-field col s11" style="margin-top:0px; margin-left:15px; color:black;">
+                <div class="input-field col s12" style="margin-top:0px; margin-left:15px; color:black;">
 
-                  <div class="col s10 m9">
+                  <div class="col s10">
                     <input type="text" placeholder="Your answer" id="answer_<?php echo $question['key'] ?>" class="validate"/>
                   </div>
-                  <div class="col s2 m3">
+                  <div class="col s2">
                     <a class="btn-floating btn-large waves-effect waves-light black-text" style="margin-left:5%; margin-bottom: 1%; width: 36px; height: 36px;" id="<?php echo $question['key'] ?>" onclick="submitAnswer(this);">
                       <i class="material-icons" style="line-height: 1px;">done</i>
                     </a>
