@@ -15,27 +15,27 @@ $("#login_form").submit(function(e) {
             {
                 if(result == 1)
                 {
-                    Materialize.toast('Login Successful', 1000);
+                    Materialize.toast('Login Successful 😁', 1000);
                     window.location="Practice.php";
                 }
                 else if(result == 2)
                 {
-                    Materialize.toast('Login Successful', 1000);
+                    Materialize.toast('Login Successful 😁 ', 1000);
                     window.location="GamePlay.php";
                 }
                 else if(result == 3)
                 {
-                    Materialize.toast('Login Successful', 1000);
+                    Materialize.toast('Login Successful 😁', 1000);
                     window.location="Summary.php";
                 }
                 else
-                    Materialize.toast('Login Failed', 1000);
+                    Materialize.toast('Login Failed 😯', 1000);
                 $('.progress_loader').hide();
                 $('.login_submit').show();
                 
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) { 
-                Materialize.toast('Error Logging in', 1000);
+                Materialize.toast('Some error occured. Please try after sometime 🙏', 1000);
                 $('.progress_loader').hide();
                 $('.login_submit').show(); 
             }
@@ -44,7 +44,7 @@ $("#login_form").submit(function(e) {
     }
     else
     {
-        Materialize.toast('Enter Valid Credentials', 1000);
+        Materialize.toast('Enter Valid Credentials 😕', 1000);
         $('.progress_loader').hide();
         $('.login_submit').show(); 
     }
@@ -70,7 +70,7 @@ function submitAnswer(e) {
             result['data'] = jQuery.parseJSON(result['data']);
             if(result['code']==1)
             {
-                Materialize.toast('Right Answer!', 1000);
+                Materialize.toast('Right Answer! 😎', 1000);
                 document.getElementById('answer_'+e.id).disabled = true;
                 $(document.getElementById('pl_'+e.id)).hide();
                 $(document.getElementById('clue_'+e.id)).hide();
@@ -80,7 +80,7 @@ function submitAnswer(e) {
             }
             else if(result['code']==0)
             {
-                Materialize.toast('Wrong answer!', 1000);
+                Materialize.toast('Wrong answer! 😯', 1000);
                 $(document.getElementById('pl_'+e.id)).hide();
                 $(e).show();
                 if(!result['data']['state'] == 0)
@@ -88,7 +88,7 @@ function submitAnswer(e) {
             }
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
-            alert('error');          
+            Materialize.toast('Some error occured. Please try after sometime 🙏', 1000);
             $(document.getElementById('pl_'+e.id)).hide();
             $(e).show();
         }
@@ -110,26 +110,26 @@ function getClue(e) {
             //alert(result['code']);
             if(result['code']==1)
             {
-                Materialize.toast("Hint:" + result['clue'], 5000);
+                Materialize.toast("Hint: " + result['clue'], 5000);
                 $(document.getElementById('clue_'+e.id)).hide();
                 $(e).show();
             }
             else if(result['code']==2)
             {
-                Materialize.toast('You will get your hint only after next set opens', 4000);
+                Materialize.toast('You will get your hint only after next set opens 😋', 4000);
                 $(document.getElementById('clue_'+e.id)).hide();
                 $(e).show();
             }
             else
             {
-                Materialize.toast('Some error occured, try again', 1000);
+                Materialize.toast('Some error occured. Please try after sometime 🙏', 1000);
                 $(document.getElementById('clue_'+e.id)).hide();
                 $(e).show();
             }
 
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
-            alert('error');          
+            Materialize.toast('Some error occured. Please try after sometime 🙏', 1000);
             $(document.getElementById('clue_'+e.id)).hide();
             $(e).show();
         }
@@ -138,7 +138,7 @@ function getClue(e) {
 }
 function getLeaderboard()
 {
-    
+
     $('#lb').empty();
 
     $.ajax
@@ -200,8 +200,8 @@ function getLeaderboard()
             $("#lb").append(divtable);
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) { 
-            alert('error');          
-            
+            Materialize.toast('Some error occured. Please try after sometime 🙏', 1000);
+
         }
     });
 }
@@ -213,9 +213,7 @@ function getNextLevel() {
     dataType: 'json',
     success: function(result)
     {
-       Materialize.toast('Next Set of Questions are open', 4000) 
-       if(result['state'] == 4)
-         Materialize.toast('This is your final set. NO CLUES WILL BE PROVIDED!', 4000);
+
      var outer = document.createElement("li");
 
 
@@ -330,14 +328,16 @@ function getNextLevel() {
 
 
                     document.getElementsByClassName("collapsible popout")[0].append(outer);
-                    
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) { 
-                    alert('error' + errorThrown);          
-                }
-            });
+                    Materialize.toast('Next Set of Questions are open 🙂', 4000) 
+                    if(result['state'] == 4)
+                     Materialize.toast('This is your final set. NO CLUES WILL BE PROVIDED!', 4000);
+
+             },
+             error: function(XMLHttpRequest, textStatus, errorThrown) { 
+             }
+         });
 } 
 function getState()
 {
-    
+
 }
