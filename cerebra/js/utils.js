@@ -288,10 +288,7 @@ function getNextLevel() {
 
 
                     document.getElementsByClassName("collapsible popout")[0].append(outer);
-                    Materialize.toast('Next Set of Questions are open 🙂', 4000) 
-                    if(result['state'] == 4)
-                     Materialize.toast('This is your final set. NO CLUES WILL BE PROVIDED!', 4000);
-
+                    Materialize.toast('Next Set of Questions are open 🙂', 4000)                     
              },
              error: function(XMLHttpRequest, textStatus, errorThrown) { 
              }
