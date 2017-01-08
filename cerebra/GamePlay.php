@@ -142,11 +142,11 @@ if (isset($_SESSION['user']))
 
 																	<div class="input-field col s11" style="margin-top:0px; margin-left:15px; color:black;">
 
-																	<div class="col s12 m9">
+																	<div class="col s12 m11">
 																		<input type="text" placeholder="Your answer" id="answer_<?php echo $_SESSION['questions'][$j]['key'] ?>" class="validate"/>
 																	</div>
-																	<div class="col s6 m2">
-																		<a class="btn-floating btn-large waves-effect waves-light" style="margin-left:5%; margin-bottom: 1%;" id="<?php echo $_SESSION['questions'][$j]['key'] ?>" onclick="submitAnswer(this);"><i class="material-icons">done</i></a>
+																	<div class="col s6 m1">
+																		<a class="btn-floating btn-large waves-effect waves-light" style="margin-left:5%; margin-bottom: 1%; background-color:#39a558;" id="<?php echo $_SESSION['questions'][$j]['key'] ?>" onclick="submitAnswer(this);"><i class="material-icons">done</i></a>
 																		<div class="progress_loader" id="pl_<?php echo $_SESSION['questions'][$j]['key'] ?>" style="display:none;">Loading...</div>
 																	</div>																	
 																		</div>

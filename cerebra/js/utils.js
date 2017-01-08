@@ -73,7 +73,6 @@ function submitAnswer(e) {
                 Materialize.toast('Right Answer! 😎', 1000);
                 document.getElementById('answer_'+e.id).disabled = true;
                 $(document.getElementById('pl_'+e.id)).hide();
-                $(document.getElementById('cl_'+e.id)).hide();
                 $(e).hide();
                 if(result['data']['questions_answered'].length > 10)
                     document.getElementById("points").innerHTML = result['data']['points'];
@@ -95,47 +94,6 @@ function submitAnswer(e) {
     });
 }
 
-function getClue(e) { 
-    $(e).hide();
-    $(document.getElementById('clue_'+e.id)).show();
-    //alert(e.id);
-    $.ajax
-    ({ 
-        url: 'getClue.php',
-        data: 'key=' + e.id,
-        type: 'post',
-        dataType: "json",
-        success: function(result)
-        {
-            //alert(result['code']);
-            if(result['code']==1)
-            {
-                Materialize.toast("Hint: " + result['clue'], 5000);
-                $(document.getElementById('clue_'+e.id)).hide();
-                $(e).show();
-            }
-            else if(result['code']==2)
-            {
-                Materialize.toast('You will get your hint only after next set opens 😋', 4000);
-                $(document.getElementById('clue_'+e.id)).hide();
-                $(e).show();
-            }
-            else
-            {
-                Materialize.toast('Some error occured. Please try after sometime 🙏', 1000);
-                $(document.getElementById('clue_'+e.id)).hide();
-                $(e).show();
-            }
-
-        },
-        error: function(XMLHttpRequest, textStatus, errorThrown) { 
-            Materialize.toast('Some error occured. Please try after sometime 🙏', 1000);
-            $(document.getElementById('clue_'+e.id)).hide();
-            $(e).show();
-        }
-    });
-
-}
 function getLeaderboard()
 {
 

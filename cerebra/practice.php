@@ -29,7 +29,9 @@ if (isset($_SESSION['user']))
           color:    red;
           opacity: 0.2 !important;
         }
-
+        .gotomain a:hover{
+            color: #000!important;
+        }
       </style>
     </head>
 
@@ -46,9 +48,11 @@ if (isset($_SESSION['user']))
 
     <div class="container">
     <div class="col s12">
-              <p class="flow-text center-align">
-              <a>Practice Level</a>&nbsp;  
-        </div>  
+        <p class="flow-text center-align">
+        <a style="white-space: nowrap;">Practice Level</a>
+        <a class="right gotomain" onclick="getState();" style="cursor: pointer; cursor: hand;"><i class="material-icons right" style="color: #039be5; font-size: 30px;">arrow_forward</i></a>
+           </p>
+     </div>  
       <?php
       $count = 0;
       foreach ($_SESSION['practice'] as $question) { 
@@ -80,7 +84,7 @@ if (isset($_SESSION['user']))
                     <input type="text" placeholder="Your answer" id="answer_<?php echo $question['key'] ?>" class="validate"/>
                   </div>
                   <div class="col s2">
-                    <a class="btn-floating btn-large waves-effect waves-light black-text" style="margin-left:5%; margin-bottom: 1%; width: 36px; height: 36px;" id="<?php echo $question['key'] ?>" onclick="submitAnswer(this);">
+                    <a class="btn-floating btn-large waves-effect waves-light black-text" style="margin-left:5%; margin-bottom: 1%; width: 36px; height: 36px; background-color:#39a558;" id="<?php echo $question['key'] ?>" onclick="submitAnswer(this);">
                       <i class="material-icons" style="line-height: 1px;">done</i>
                     </a>
                     <div class="progress_loader" id="pl_<?php echo $question['key'] ?>" style="display:none;">Loading...</div>
@@ -98,8 +102,9 @@ if (isset($_SESSION['user']))
     }
       ?>
       <center>
-        <a onclick="getState();" style="font-size: 22px; cursor: pointer; cursor: hand;">Proceed to next level<i class="material-icons">arrow_forward</i></a>
+        <a onclick="getState();" style="font-size: 22px; cursor: pointer; cursor: hand;">Proceed to next level</a>
       </center>
+
     </div>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
